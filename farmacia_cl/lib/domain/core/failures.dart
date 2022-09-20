@@ -25,15 +25,12 @@ abstract class ValueFailure<T> with _$ValueFailure<T>{
   }) = PassWordTooShort<T>;
   const factory ValueFailure.passwordMustContainSpecialCharacter({
     required T failedValue,
-    required int max,
   }) = PasswordMustContainSpecialCharacter<T>;
   const factory ValueFailure.passwordMustContainCapitalLetter({
     required T failedValue,
-    required int max,
   }) = PasswordMustContainCapitalLetter<T>;
   const factory ValueFailure.passwordMustContainNumber({
     required T failedValue,
-    required int max,
   }) = PasswordMustContainNumber<T>;
 
 
