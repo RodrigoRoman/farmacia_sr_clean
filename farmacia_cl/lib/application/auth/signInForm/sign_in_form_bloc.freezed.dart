@@ -134,15 +134,23 @@ class __$$EmailChangedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$EmailChanged implements EmailChanged {
+class _$EmailChanged with DiagnosticableTreeMixin implements EmailChanged {
   const _$EmailChanged(this.emailStr);
 
   @override
   final String emailStr;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'SignInFormEvent.emailChanged(emailStr: $emailStr)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'SignInFormEvent.emailChanged'))
+      ..add(DiagnosticsProperty('emailStr', emailStr));
   }
 
   @override
@@ -295,15 +303,25 @@ class __$$PasswordChangedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$PasswordChanged implements PasswordChanged {
+class _$PasswordChanged
+    with DiagnosticableTreeMixin
+    implements PasswordChanged {
   const _$PasswordChanged(this.passwordStr);
 
   @override
   final String passwordStr;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'SignInFormEvent.passwordChanged(passwordStr: $passwordStr)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'SignInFormEvent.passwordChanged'))
+      ..add(DiagnosticsProperty('passwordStr', passwordStr));
   }
 
   @override
@@ -461,6 +479,7 @@ class __$$RegisterWithEmailAndPasswordPressedCopyWithImpl<$Res>
 /// @nodoc
 
 class _$RegisterWithEmailAndPasswordPressed
+    with DiagnosticableTreeMixin
     implements RegisterWithEmailAndPasswordPressed {
   const _$RegisterWithEmailAndPasswordPressed(this.emailStr);
 
@@ -468,8 +487,17 @@ class _$RegisterWithEmailAndPasswordPressed
   final String emailStr;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'SignInFormEvent.registerWithEmailAndPasswordPressed(emailStr: $emailStr)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty(
+          'type', 'SignInFormEvent.registerWithEmailAndPasswordPressed'))
+      ..add(DiagnosticsProperty('emailStr', emailStr));
   }
 
   @override
@@ -630,6 +658,7 @@ class __$$SignInWithEmailAndPasswordPressedCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SignInWithEmailAndPasswordPressed
+    with DiagnosticableTreeMixin
     implements SignInWithEmailAndPasswordPressed {
   const _$SignInWithEmailAndPasswordPressed(this.emailStr);
 
@@ -637,8 +666,17 @@ class _$SignInWithEmailAndPasswordPressed
   final String emailStr;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'SignInFormEvent.signInWithEmailAndPasswordPressed(emailStr: $emailStr)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty(
+          'type', 'SignInFormEvent.signInWithEmailAndPasswordPressed'))
+      ..add(DiagnosticsProperty('emailStr', emailStr));
   }
 
   @override
@@ -796,15 +834,26 @@ class __$$SignInWithGooglePressedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SignInWithGooglePressed implements SignInWithGooglePressed {
+class _$SignInWithGooglePressed
+    with DiagnosticableTreeMixin
+    implements SignInWithGooglePressed {
   const _$SignInWithGooglePressed(this.emailStr);
 
   @override
   final String emailStr;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'SignInFormEvent.signinWithGooglePressed(emailStr: $emailStr)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty(
+          'type', 'SignInFormEvent.signinWithGooglePressed'))
+      ..add(DiagnosticsProperty('emailStr', emailStr));
   }
 
   @override
@@ -931,7 +980,8 @@ mixin _$SignInFormState {
   Password get password => throw _privateConstructorUsedError;
   bool get showErrorMessages => throw _privateConstructorUsedError;
   bool get isSubmitting => throw _privateConstructorUsedError;
-  dynamic get authFailureOrSucessOption => throw _privateConstructorUsedError;
+  Option<Either<AuthFailure, Unit>> get authFailureOrSucessOption =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SignInFormStateCopyWith<SignInFormState> get copyWith =>
@@ -948,7 +998,7 @@ abstract class $SignInFormStateCopyWith<$Res> {
       Password password,
       bool showErrorMessages,
       bool isSubmitting,
-      dynamic authFailureOrSucessOption});
+      Option<Either<AuthFailure, Unit>> authFailureOrSucessOption});
 }
 
 /// @nodoc
@@ -988,7 +1038,7 @@ class _$SignInFormStateCopyWithImpl<$Res>
       authFailureOrSucessOption: authFailureOrSucessOption == freezed
           ? _value.authFailureOrSucessOption
           : authFailureOrSucessOption // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as Option<Either<AuthFailure, Unit>>,
     ));
   }
 }
@@ -1005,7 +1055,7 @@ abstract class _$$_SignInFormStateCopyWith<$Res>
       Password password,
       bool showErrorMessages,
       bool isSubmitting,
-      dynamic authFailureOrSucessOption});
+      Option<Either<AuthFailure, Unit>> authFailureOrSucessOption});
 }
 
 /// @nodoc
@@ -1046,14 +1096,17 @@ class __$$_SignInFormStateCopyWithImpl<$Res>
               as bool,
       authFailureOrSucessOption: authFailureOrSucessOption == freezed
           ? _value.authFailureOrSucessOption
-          : authFailureOrSucessOption,
+          : authFailureOrSucessOption // ignore: cast_nullable_to_non_nullable
+              as Option<Either<AuthFailure, Unit>>,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_SignInFormState implements _SignInFormState {
+class _$_SignInFormState
+    with DiagnosticableTreeMixin
+    implements _SignInFormState {
   const _$_SignInFormState(
       {required this.emailAdress,
       required this.password,
@@ -1070,11 +1123,24 @@ class _$_SignInFormState implements _SignInFormState {
   @override
   final bool isSubmitting;
   @override
-  final dynamic authFailureOrSucessOption;
+  final Option<Either<AuthFailure, Unit>> authFailureOrSucessOption;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'SignInFormState(emailAdress: $emailAdress, password: $password, showErrorMessages: $showErrorMessages, isSubmitting: $isSubmitting, authFailureOrSucessOption: $authFailureOrSucessOption)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'SignInFormState'))
+      ..add(DiagnosticsProperty('emailAdress', emailAdress))
+      ..add(DiagnosticsProperty('password', password))
+      ..add(DiagnosticsProperty('showErrorMessages', showErrorMessages))
+      ..add(DiagnosticsProperty('isSubmitting', isSubmitting))
+      ..add(DiagnosticsProperty(
+          'authFailureOrSucessOption', authFailureOrSucessOption));
   }
 
   @override
@@ -1114,7 +1180,8 @@ abstract class _SignInFormState implements SignInFormState {
       required final Password password,
       required final bool showErrorMessages,
       required final bool isSubmitting,
-      required final dynamic authFailureOrSucessOption}) = _$_SignInFormState;
+      required final Option<Either<AuthFailure, Unit>>
+          authFailureOrSucessOption}) = _$_SignInFormState;
 
   @override
   EmailAdress get emailAdress;
@@ -1125,7 +1192,7 @@ abstract class _SignInFormState implements SignInFormState {
   @override
   bool get isSubmitting;
   @override
-  dynamic get authFailureOrSucessOption;
+  Option<Either<AuthFailure, Unit>> get authFailureOrSucessOption;
   @override
   @JsonKey(ignore: true)
   _$$_SignInFormStateCopyWith<_$_SignInFormState> get copyWith =>

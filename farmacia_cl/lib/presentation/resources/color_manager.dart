@@ -7,15 +7,16 @@ class ColorManager{
   static Color peach = HexColor.fromHex('#F9DEC3');
   static Color ligthBlue = HexColor.fromHex('#9CC8F4');
   static Color midBlue = HexColor.fromHex('#7AA6EB');
+  static Color black = HexColor.fromHex('#000000');
+
 
   //for dark mode
   static Color darkPurple = HexColor.fromHex('#3E2B39');
   static Color midLightBlue = HexColor.fromHex('#8EB6E4');
   static Color purple = HexColor.fromHex('#58154F');
   static Color darkBlue = HexColor.fromHex('#234A7E');
-  static Color grey = HexColor.fromHex('#5D686E');
-
-
+  static Color grey = HexColor.fromHex('#5D686E'); 
+  static Color red = HexColor.fromHex('#FB3B1E'); 
 }
 extension HexColor on Color{
   static Color fromHex(String hexColorString){
