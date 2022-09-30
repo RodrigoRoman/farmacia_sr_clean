@@ -11,7 +11,26 @@ class LoginScreen extends StatefulWidget {
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }
+class SignInWithText extends StatelessWidget{
+  const SignInWithText({Key? key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        Text(
+          '- O -',
+          style: Theme.of(context).textTheme.caption
+        ),
+        SizedBox(height: 20.0),
+        Text(
+          'Ingresa con',
+          style:Theme.of(context).textTheme.bodySmall
+        ),
+      ],
+    );
+  }
 
+}
 class _LoginScreenState extends State<LoginScreen> {
   
   final _formKey = GlobalKey<FormState>();
@@ -60,28 +79,7 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
 
-  Widget _buildSignInWithText() {
-    return Column(
-      children: <Widget>[
-        Text(
-          '- O -',
-          style: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.w400,
-          ),
-        ),
-        SizedBox(height: 20.0),
-        Text(
-          'Ingresa con',
-          style: kLabelStyle,
-        ),
-      ],
-    );
-  }
-
-
   Widget _buildSignupBtn() {
-    print(_auth);
     return TextButton(
       onPressed: ()=>widget.toggleDrawer(),
       child: RichText(
