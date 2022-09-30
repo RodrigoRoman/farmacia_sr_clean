@@ -11,6 +11,8 @@ class AppStrings{
   static const String editar = 'Editar';
 
   static const String username = 'username_hint';
+  static const String email = 'Email';
+  static const String password= 'Contraseña';
   static const String mobileNumber = 'mobile_number_hint';
 
   static const String existencias = 'existencias';
