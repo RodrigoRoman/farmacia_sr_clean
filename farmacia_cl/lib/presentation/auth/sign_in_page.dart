@@ -1,6 +1,9 @@
+import 'package:farmacia_cl/application/auth/signInForm/sign_in_form_bloc.dart';
+import 'package:farmacia_cl/injection.dart';
 import 'package:farmacia_cl/presentation/resources/constant_size_values.dart';
 import 'package:farmacia_cl/presentation/resources/string_manager.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AuthPage extends StatefulWidget {
   const AuthPage({Key? key}) : super(key: key);
@@ -12,17 +15,20 @@ class AuthPage extends StatefulWidget {
 class _AuthPageState extends State<AuthPage> {
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(builder: (context,dimensions){
-      final width = dimensions.maxWidth/AppSize.s1_5;
-      final height = dimensions.maxHeight/AppSize.s3;
-      return Center(
-        child: SizedBox(
-          width: width,
-          height: height,
-          child:LoginForm()
-        )
-      );
-    }
+    return BlocProvider(
+      create:(context) =>getIt<SignInFormBloc>(),
+      child: LayoutBuilder(builder: (context,dimensions){
+        final width = dimensions.maxWidth/AppSize.s1_5;
+        final height = dimensions.maxHeight/AppSize.s3;
+        return Center(
+          child: SizedBox(
+            width: width,
+            height: height,
+            child:LoginForm()
+          )
+        );
+      }
+      ),
     );
   }
 }
@@ -30,7 +36,6 @@ class _AuthPageState extends State<AuthPage> {
 class LoginForm extends StatelessWidget {
   LoginForm({Key? key}) : super(key: key);
   final _key = GlobalKey<FormState>();
-
   @override
   Widget build(BuildContext context) {
     return Form(
