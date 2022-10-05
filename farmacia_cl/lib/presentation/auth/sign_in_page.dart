@@ -38,15 +38,26 @@ class LoginForm extends StatelessWidget {
   final _key = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key:_key,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children:const <Widget>  [
-          EmailTextForm(),
-          PasswordTextForm(),
-          ConfirmButton()
-        ]
+    return BlocConsumer<SignInFormBloc,SignInFormState>(
+      listener: (context, state) {
+        state.authFailureOrSucessOption.fold(
+          () {}, 
+          (either) => either.fold((failure){
+            print('failed');
+          },
+          (_) => null)
+          );
+      },
+      builder:(context,state)=> Form(
+        key:_key,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children:const <Widget>  [
+            EmailTextForm(),
+            PasswordTextForm(),
+            ConfirmButton()
+          ]
+        ),
       ),
     );
   }
@@ -58,10 +69,28 @@ class EmailTextForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      autocorrect:false,
+      onChanged: (value) => 
+        context
+        .read<SignInFormBloc>()
+        .add(SignInFormEvent.emailChanged(value)),
+      validator: (_)=>
+        context
+          .read<SignInFormBloc>()
+          .state
+          .emailAdress
+          .value
+          .fold((f)=>f.maybeMap(
+            invalidEmail: (_)=>'Invalid Email',
+            orElse:() => null,
+            ),
+            (_)=>null
+          )
+          ,
       decoration: const InputDecoration(
         icon:Icon(Icons.email),
-        hintText: AppStrings.email
-        ),
+        hintText: AppStrings.email,
+      ),
     );
   }
 }
@@ -71,11 +100,38 @@ class PasswordTextForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      autocorrect: false,
+      obscureText:true,
+      onChanged: ((value) => 
+        context
+          .read<SignInFormBloc>()
+          .add(SignInFormEvent.passwordChanged(value))
+        ),
+      validator: (_)=>
+        context
+          .read<SignInFormBloc>()
+          .state
+          .password
+          .value
+          .fold(
+            (f) => f.maybeMap(
+                passwordTooShort:(_)=> 'Contraseña demasiado corta',
+                passwordMustContainCapitalLetter: (_)=> 'Incluya una letra mayuscula',
+                passwordMustContainSpecialCharacter: (_)=> 'Incluya un caracter especail',
+                passwordMustContainNumber: (_)=>'Incluya por lo menos un numero',
+                orElse: () => null,
+              ),
+            (r) => null
+          )
+        ,
+
+
+
+
       decoration: const InputDecoration(
         icon:Icon(Icons.vpn_key),
         hintText: AppStrings.password
         ),
-        obscureText: true,
     );
   }
 }
@@ -86,7 +142,11 @@ class ConfirmButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  ElevatedButton(
-      onPressed: ()=>print('pressed'), 
+      onPressed: (){
+        context
+          .read<SignInFormBloc>()
+          .add(SignInFormEvent.registerWithEmailAndPasswordPressed());
+      }, 
       child: const Text(AppStrings.completar)
     );
   }

@@ -20,29 +20,27 @@ mixin _$SignInFormEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String emailStr) emailChanged,
     required TResult Function(String passwordStr) passwordChanged,
-    required TResult Function(String emailStr)
-        registerWithEmailAndPasswordPressed,
-    required TResult Function(String emailStr)
-        signInWithEmailAndPasswordPressed,
-    required TResult Function(String emailStr) signinWithGooglePressed,
+    required TResult Function() registerWithEmailAndPasswordPressed,
+    required TResult Function() signInWithEmailAndPasswordPressed,
+    required TResult Function() signinWithGooglePressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String emailStr)? emailChanged,
     TResult Function(String passwordStr)? passwordChanged,
-    TResult Function(String emailStr)? registerWithEmailAndPasswordPressed,
-    TResult Function(String emailStr)? signInWithEmailAndPasswordPressed,
-    TResult Function(String emailStr)? signinWithGooglePressed,
+    TResult Function()? registerWithEmailAndPasswordPressed,
+    TResult Function()? signInWithEmailAndPasswordPressed,
+    TResult Function()? signinWithGooglePressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String emailStr)? emailChanged,
     TResult Function(String passwordStr)? passwordChanged,
-    TResult Function(String emailStr)? registerWithEmailAndPasswordPressed,
-    TResult Function(String emailStr)? signInWithEmailAndPasswordPressed,
-    TResult Function(String emailStr)? signinWithGooglePressed,
+    TResult Function()? registerWithEmailAndPasswordPressed,
+    TResult Function()? signInWithEmailAndPasswordPressed,
+    TResult Function()? signinWithGooglePressed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -175,11 +173,9 @@ class _$EmailChanged with DiagnosticableTreeMixin implements EmailChanged {
   TResult when<TResult extends Object?>({
     required TResult Function(String emailStr) emailChanged,
     required TResult Function(String passwordStr) passwordChanged,
-    required TResult Function(String emailStr)
-        registerWithEmailAndPasswordPressed,
-    required TResult Function(String emailStr)
-        signInWithEmailAndPasswordPressed,
-    required TResult Function(String emailStr) signinWithGooglePressed,
+    required TResult Function() registerWithEmailAndPasswordPressed,
+    required TResult Function() signInWithEmailAndPasswordPressed,
+    required TResult Function() signinWithGooglePressed,
   }) {
     return emailChanged(emailStr);
   }
@@ -189,9 +185,9 @@ class _$EmailChanged with DiagnosticableTreeMixin implements EmailChanged {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String emailStr)? emailChanged,
     TResult Function(String passwordStr)? passwordChanged,
-    TResult Function(String emailStr)? registerWithEmailAndPasswordPressed,
-    TResult Function(String emailStr)? signInWithEmailAndPasswordPressed,
-    TResult Function(String emailStr)? signinWithGooglePressed,
+    TResult Function()? registerWithEmailAndPasswordPressed,
+    TResult Function()? signInWithEmailAndPasswordPressed,
+    TResult Function()? signinWithGooglePressed,
   }) {
     return emailChanged?.call(emailStr);
   }
@@ -201,9 +197,9 @@ class _$EmailChanged with DiagnosticableTreeMixin implements EmailChanged {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String emailStr)? emailChanged,
     TResult Function(String passwordStr)? passwordChanged,
-    TResult Function(String emailStr)? registerWithEmailAndPasswordPressed,
-    TResult Function(String emailStr)? signInWithEmailAndPasswordPressed,
-    TResult Function(String emailStr)? signinWithGooglePressed,
+    TResult Function()? registerWithEmailAndPasswordPressed,
+    TResult Function()? signInWithEmailAndPasswordPressed,
+    TResult Function()? signinWithGooglePressed,
     required TResult orElse(),
   }) {
     if (emailChanged != null) {
@@ -347,11 +343,9 @@ class _$PasswordChanged
   TResult when<TResult extends Object?>({
     required TResult Function(String emailStr) emailChanged,
     required TResult Function(String passwordStr) passwordChanged,
-    required TResult Function(String emailStr)
-        registerWithEmailAndPasswordPressed,
-    required TResult Function(String emailStr)
-        signInWithEmailAndPasswordPressed,
-    required TResult Function(String emailStr) signinWithGooglePressed,
+    required TResult Function() registerWithEmailAndPasswordPressed,
+    required TResult Function() signInWithEmailAndPasswordPressed,
+    required TResult Function() signinWithGooglePressed,
   }) {
     return passwordChanged(passwordStr);
   }
@@ -361,9 +355,9 @@ class _$PasswordChanged
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String emailStr)? emailChanged,
     TResult Function(String passwordStr)? passwordChanged,
-    TResult Function(String emailStr)? registerWithEmailAndPasswordPressed,
-    TResult Function(String emailStr)? signInWithEmailAndPasswordPressed,
-    TResult Function(String emailStr)? signinWithGooglePressed,
+    TResult Function()? registerWithEmailAndPasswordPressed,
+    TResult Function()? signInWithEmailAndPasswordPressed,
+    TResult Function()? signinWithGooglePressed,
   }) {
     return passwordChanged?.call(passwordStr);
   }
@@ -373,9 +367,9 @@ class _$PasswordChanged
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String emailStr)? emailChanged,
     TResult Function(String passwordStr)? passwordChanged,
-    TResult Function(String emailStr)? registerWithEmailAndPasswordPressed,
-    TResult Function(String emailStr)? signInWithEmailAndPasswordPressed,
-    TResult Function(String emailStr)? signinWithGooglePressed,
+    TResult Function()? registerWithEmailAndPasswordPressed,
+    TResult Function()? signInWithEmailAndPasswordPressed,
+    TResult Function()? signinWithGooglePressed,
     required TResult orElse(),
   }) {
     if (passwordChanged != null) {
@@ -447,7 +441,6 @@ abstract class _$$RegisterWithEmailAndPasswordPressedCopyWith<$Res> {
           _$RegisterWithEmailAndPasswordPressed value,
           $Res Function(_$RegisterWithEmailAndPasswordPressed) then) =
       __$$RegisterWithEmailAndPasswordPressedCopyWithImpl<$Res>;
-  $Res call({String emailStr});
 }
 
 /// @nodoc
@@ -462,18 +455,6 @@ class __$$RegisterWithEmailAndPasswordPressedCopyWithImpl<$Res>
   @override
   _$RegisterWithEmailAndPasswordPressed get _value =>
       super._value as _$RegisterWithEmailAndPasswordPressed;
-
-  @override
-  $Res call({
-    Object? emailStr = freezed,
-  }) {
-    return _then(_$RegisterWithEmailAndPasswordPressed(
-      emailStr == freezed
-          ? _value.emailStr
-          : emailStr // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
 }
 
 /// @nodoc
@@ -481,56 +462,40 @@ class __$$RegisterWithEmailAndPasswordPressedCopyWithImpl<$Res>
 class _$RegisterWithEmailAndPasswordPressed
     with DiagnosticableTreeMixin
     implements RegisterWithEmailAndPasswordPressed {
-  const _$RegisterWithEmailAndPasswordPressed(this.emailStr);
-
-  @override
-  final String emailStr;
+  const _$RegisterWithEmailAndPasswordPressed();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'SignInFormEvent.registerWithEmailAndPasswordPressed(emailStr: $emailStr)';
+    return 'SignInFormEvent.registerWithEmailAndPasswordPressed()';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty(
-          'type', 'SignInFormEvent.registerWithEmailAndPasswordPressed'))
-      ..add(DiagnosticsProperty('emailStr', emailStr));
+    properties.add(DiagnosticsProperty(
+        'type', 'SignInFormEvent.registerWithEmailAndPasswordPressed'));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$RegisterWithEmailAndPasswordPressed &&
-            const DeepCollectionEquality().equals(other.emailStr, emailStr));
+            other is _$RegisterWithEmailAndPasswordPressed);
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(emailStr));
-
-  @JsonKey(ignore: true)
-  @override
-  _$$RegisterWithEmailAndPasswordPressedCopyWith<
-          _$RegisterWithEmailAndPasswordPressed>
-      get copyWith => __$$RegisterWithEmailAndPasswordPressedCopyWithImpl<
-          _$RegisterWithEmailAndPasswordPressed>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String emailStr) emailChanged,
     required TResult Function(String passwordStr) passwordChanged,
-    required TResult Function(String emailStr)
-        registerWithEmailAndPasswordPressed,
-    required TResult Function(String emailStr)
-        signInWithEmailAndPasswordPressed,
-    required TResult Function(String emailStr) signinWithGooglePressed,
+    required TResult Function() registerWithEmailAndPasswordPressed,
+    required TResult Function() signInWithEmailAndPasswordPressed,
+    required TResult Function() signinWithGooglePressed,
   }) {
-    return registerWithEmailAndPasswordPressed(emailStr);
+    return registerWithEmailAndPasswordPressed();
   }
 
   @override
@@ -538,11 +503,11 @@ class _$RegisterWithEmailAndPasswordPressed
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String emailStr)? emailChanged,
     TResult Function(String passwordStr)? passwordChanged,
-    TResult Function(String emailStr)? registerWithEmailAndPasswordPressed,
-    TResult Function(String emailStr)? signInWithEmailAndPasswordPressed,
-    TResult Function(String emailStr)? signinWithGooglePressed,
+    TResult Function()? registerWithEmailAndPasswordPressed,
+    TResult Function()? signInWithEmailAndPasswordPressed,
+    TResult Function()? signinWithGooglePressed,
   }) {
-    return registerWithEmailAndPasswordPressed?.call(emailStr);
+    return registerWithEmailAndPasswordPressed?.call();
   }
 
   @override
@@ -550,13 +515,13 @@ class _$RegisterWithEmailAndPasswordPressed
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String emailStr)? emailChanged,
     TResult Function(String passwordStr)? passwordChanged,
-    TResult Function(String emailStr)? registerWithEmailAndPasswordPressed,
-    TResult Function(String emailStr)? signInWithEmailAndPasswordPressed,
-    TResult Function(String emailStr)? signinWithGooglePressed,
+    TResult Function()? registerWithEmailAndPasswordPressed,
+    TResult Function()? signInWithEmailAndPasswordPressed,
+    TResult Function()? signinWithGooglePressed,
     required TResult orElse(),
   }) {
     if (registerWithEmailAndPasswordPressed != null) {
-      return registerWithEmailAndPasswordPressed(emailStr);
+      return registerWithEmailAndPasswordPressed();
     }
     return orElse();
   }
@@ -610,14 +575,8 @@ class _$RegisterWithEmailAndPasswordPressed
 }
 
 abstract class RegisterWithEmailAndPasswordPressed implements SignInFormEvent {
-  const factory RegisterWithEmailAndPasswordPressed(final String emailStr) =
+  const factory RegisterWithEmailAndPasswordPressed() =
       _$RegisterWithEmailAndPasswordPressed;
-
-  String get emailStr;
-  @JsonKey(ignore: true)
-  _$$RegisterWithEmailAndPasswordPressedCopyWith<
-          _$RegisterWithEmailAndPasswordPressed>
-      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -626,7 +585,6 @@ abstract class _$$SignInWithEmailAndPasswordPressedCopyWith<$Res> {
           _$SignInWithEmailAndPasswordPressed value,
           $Res Function(_$SignInWithEmailAndPasswordPressed) then) =
       __$$SignInWithEmailAndPasswordPressedCopyWithImpl<$Res>;
-  $Res call({String emailStr});
 }
 
 /// @nodoc
@@ -641,18 +599,6 @@ class __$$SignInWithEmailAndPasswordPressedCopyWithImpl<$Res>
   @override
   _$SignInWithEmailAndPasswordPressed get _value =>
       super._value as _$SignInWithEmailAndPasswordPressed;
-
-  @override
-  $Res call({
-    Object? emailStr = freezed,
-  }) {
-    return _then(_$SignInWithEmailAndPasswordPressed(
-      emailStr == freezed
-          ? _value.emailStr
-          : emailStr // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
 }
 
 /// @nodoc
@@ -660,56 +606,40 @@ class __$$SignInWithEmailAndPasswordPressedCopyWithImpl<$Res>
 class _$SignInWithEmailAndPasswordPressed
     with DiagnosticableTreeMixin
     implements SignInWithEmailAndPasswordPressed {
-  const _$SignInWithEmailAndPasswordPressed(this.emailStr);
-
-  @override
-  final String emailStr;
+  const _$SignInWithEmailAndPasswordPressed();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'SignInFormEvent.signInWithEmailAndPasswordPressed(emailStr: $emailStr)';
+    return 'SignInFormEvent.signInWithEmailAndPasswordPressed()';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty(
-          'type', 'SignInFormEvent.signInWithEmailAndPasswordPressed'))
-      ..add(DiagnosticsProperty('emailStr', emailStr));
+    properties.add(DiagnosticsProperty(
+        'type', 'SignInFormEvent.signInWithEmailAndPasswordPressed'));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SignInWithEmailAndPasswordPressed &&
-            const DeepCollectionEquality().equals(other.emailStr, emailStr));
+            other is _$SignInWithEmailAndPasswordPressed);
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(emailStr));
-
-  @JsonKey(ignore: true)
-  @override
-  _$$SignInWithEmailAndPasswordPressedCopyWith<
-          _$SignInWithEmailAndPasswordPressed>
-      get copyWith => __$$SignInWithEmailAndPasswordPressedCopyWithImpl<
-          _$SignInWithEmailAndPasswordPressed>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String emailStr) emailChanged,
     required TResult Function(String passwordStr) passwordChanged,
-    required TResult Function(String emailStr)
-        registerWithEmailAndPasswordPressed,
-    required TResult Function(String emailStr)
-        signInWithEmailAndPasswordPressed,
-    required TResult Function(String emailStr) signinWithGooglePressed,
+    required TResult Function() registerWithEmailAndPasswordPressed,
+    required TResult Function() signInWithEmailAndPasswordPressed,
+    required TResult Function() signinWithGooglePressed,
   }) {
-    return signInWithEmailAndPasswordPressed(emailStr);
+    return signInWithEmailAndPasswordPressed();
   }
 
   @override
@@ -717,11 +647,11 @@ class _$SignInWithEmailAndPasswordPressed
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String emailStr)? emailChanged,
     TResult Function(String passwordStr)? passwordChanged,
-    TResult Function(String emailStr)? registerWithEmailAndPasswordPressed,
-    TResult Function(String emailStr)? signInWithEmailAndPasswordPressed,
-    TResult Function(String emailStr)? signinWithGooglePressed,
+    TResult Function()? registerWithEmailAndPasswordPressed,
+    TResult Function()? signInWithEmailAndPasswordPressed,
+    TResult Function()? signinWithGooglePressed,
   }) {
-    return signInWithEmailAndPasswordPressed?.call(emailStr);
+    return signInWithEmailAndPasswordPressed?.call();
   }
 
   @override
@@ -729,13 +659,13 @@ class _$SignInWithEmailAndPasswordPressed
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String emailStr)? emailChanged,
     TResult Function(String passwordStr)? passwordChanged,
-    TResult Function(String emailStr)? registerWithEmailAndPasswordPressed,
-    TResult Function(String emailStr)? signInWithEmailAndPasswordPressed,
-    TResult Function(String emailStr)? signinWithGooglePressed,
+    TResult Function()? registerWithEmailAndPasswordPressed,
+    TResult Function()? signInWithEmailAndPasswordPressed,
+    TResult Function()? signinWithGooglePressed,
     required TResult orElse(),
   }) {
     if (signInWithEmailAndPasswordPressed != null) {
-      return signInWithEmailAndPasswordPressed(emailStr);
+      return signInWithEmailAndPasswordPressed();
     }
     return orElse();
   }
@@ -789,14 +719,8 @@ class _$SignInWithEmailAndPasswordPressed
 }
 
 abstract class SignInWithEmailAndPasswordPressed implements SignInFormEvent {
-  const factory SignInWithEmailAndPasswordPressed(final String emailStr) =
+  const factory SignInWithEmailAndPasswordPressed() =
       _$SignInWithEmailAndPasswordPressed;
-
-  String get emailStr;
-  @JsonKey(ignore: true)
-  _$$SignInWithEmailAndPasswordPressedCopyWith<
-          _$SignInWithEmailAndPasswordPressed>
-      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -804,7 +728,6 @@ abstract class _$$SignInWithGooglePressedCopyWith<$Res> {
   factory _$$SignInWithGooglePressedCopyWith(_$SignInWithGooglePressed value,
           $Res Function(_$SignInWithGooglePressed) then) =
       __$$SignInWithGooglePressedCopyWithImpl<$Res>;
-  $Res call({String emailStr});
 }
 
 /// @nodoc
@@ -818,18 +741,6 @@ class __$$SignInWithGooglePressedCopyWithImpl<$Res>
   @override
   _$SignInWithGooglePressed get _value =>
       super._value as _$SignInWithGooglePressed;
-
-  @override
-  $Res call({
-    Object? emailStr = freezed,
-  }) {
-    return _then(_$SignInWithGooglePressed(
-      emailStr == freezed
-          ? _value.emailStr
-          : emailStr // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
 }
 
 /// @nodoc
@@ -837,55 +748,40 @@ class __$$SignInWithGooglePressedCopyWithImpl<$Res>
 class _$SignInWithGooglePressed
     with DiagnosticableTreeMixin
     implements SignInWithGooglePressed {
-  const _$SignInWithGooglePressed(this.emailStr);
-
-  @override
-  final String emailStr;
+  const _$SignInWithGooglePressed();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'SignInFormEvent.signinWithGooglePressed(emailStr: $emailStr)';
+    return 'SignInFormEvent.signinWithGooglePressed()';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty(
-          'type', 'SignInFormEvent.signinWithGooglePressed'))
-      ..add(DiagnosticsProperty('emailStr', emailStr));
+    properties.add(
+        DiagnosticsProperty('type', 'SignInFormEvent.signinWithGooglePressed'));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SignInWithGooglePressed &&
-            const DeepCollectionEquality().equals(other.emailStr, emailStr));
+            other is _$SignInWithGooglePressed);
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(emailStr));
-
-  @JsonKey(ignore: true)
-  @override
-  _$$SignInWithGooglePressedCopyWith<_$SignInWithGooglePressed> get copyWith =>
-      __$$SignInWithGooglePressedCopyWithImpl<_$SignInWithGooglePressed>(
-          this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String emailStr) emailChanged,
     required TResult Function(String passwordStr) passwordChanged,
-    required TResult Function(String emailStr)
-        registerWithEmailAndPasswordPressed,
-    required TResult Function(String emailStr)
-        signInWithEmailAndPasswordPressed,
-    required TResult Function(String emailStr) signinWithGooglePressed,
+    required TResult Function() registerWithEmailAndPasswordPressed,
+    required TResult Function() signInWithEmailAndPasswordPressed,
+    required TResult Function() signinWithGooglePressed,
   }) {
-    return signinWithGooglePressed(emailStr);
+    return signinWithGooglePressed();
   }
 
   @override
@@ -893,11 +789,11 @@ class _$SignInWithGooglePressed
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String emailStr)? emailChanged,
     TResult Function(String passwordStr)? passwordChanged,
-    TResult Function(String emailStr)? registerWithEmailAndPasswordPressed,
-    TResult Function(String emailStr)? signInWithEmailAndPasswordPressed,
-    TResult Function(String emailStr)? signinWithGooglePressed,
+    TResult Function()? registerWithEmailAndPasswordPressed,
+    TResult Function()? signInWithEmailAndPasswordPressed,
+    TResult Function()? signinWithGooglePressed,
   }) {
-    return signinWithGooglePressed?.call(emailStr);
+    return signinWithGooglePressed?.call();
   }
 
   @override
@@ -905,13 +801,13 @@ class _$SignInWithGooglePressed
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String emailStr)? emailChanged,
     TResult Function(String passwordStr)? passwordChanged,
-    TResult Function(String emailStr)? registerWithEmailAndPasswordPressed,
-    TResult Function(String emailStr)? signInWithEmailAndPasswordPressed,
-    TResult Function(String emailStr)? signinWithGooglePressed,
+    TResult Function()? registerWithEmailAndPasswordPressed,
+    TResult Function()? signInWithEmailAndPasswordPressed,
+    TResult Function()? signinWithGooglePressed,
     required TResult orElse(),
   }) {
     if (signinWithGooglePressed != null) {
-      return signinWithGooglePressed(emailStr);
+      return signinWithGooglePressed();
     }
     return orElse();
   }
@@ -965,13 +861,7 @@ class _$SignInWithGooglePressed
 }
 
 abstract class SignInWithGooglePressed implements SignInFormEvent {
-  const factory SignInWithGooglePressed(final String emailStr) =
-      _$SignInWithGooglePressed;
-
-  String get emailStr;
-  @JsonKey(ignore: true)
-  _$$SignInWithGooglePressedCopyWith<_$SignInWithGooglePressed> get copyWith =>
-      throw _privateConstructorUsedError;
+  const factory SignInWithGooglePressed() = _$SignInWithGooglePressed;
 }
 
 /// @nodoc
