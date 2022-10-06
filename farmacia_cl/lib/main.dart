@@ -1,11 +1,18 @@
 import 'package:farmacia_cl/injection.dart';
 import 'package:farmacia_cl/presentation/auth/sign_in_page.dart';
 import 'package:farmacia_cl/presentation/resources/themes.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
+// import 'firebase_options.dart';
 
-void main() {
-  configureInjection(Environment.prod);
+
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    // options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
