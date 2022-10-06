@@ -1,6 +1,8 @@
+import 'package:farmacia_cl/presentation/resources/asset_names.dart';
 import 'package:farmacia_cl/presentation/resources/color_manager.dart';
 import 'package:farmacia_cl/presentation/resources/constant_size_values.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 
 enum StateRendererType {
@@ -16,7 +18,7 @@ enum StateRendererType {
 }
 
 class StateRenderer extends StatelessWidget{
-  StateRendererType? stateRendererType;
+  // StateRendererType? stateRendererType;
   String? message;
   String? title;
   Function? retryActionFunction;
@@ -30,14 +32,22 @@ class StateRenderer extends StatelessWidget{
 }
 
 class StateAppWidget extends StatelessWidget {
-  const StateAppWidget({Key? key}) : super(key: key);
+  final StateRendererType stateRendererType;
+  final String message;
+  const StateAppWidget({required this.stateRendererType,required this.message,Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    switch (StateRendererType) {
+    switch(stateRendererType) {
       case StateRendererType.POPUP_LOADING_STATE:
-        return Container();
+        return const PopUpDialog(children:[AnimatedImage(animationName:AssetNames.loading)]);
       case StateRendererType.POPUP_ERROR_STATE:
+        return const PopUpDialog(
+          children:[
+            AnimatedImage(animationName:AssetNames.loading),
+            StateMessage(message: message)
+            ]
+          );
       case StateRendererType.POPUP_SUCCESS:
       case StateRendererType.FULL_SCREEN_LOADING_STATE:
       case StateRendererType.FULL_SCREEN_ERROR_STATE:
@@ -45,9 +55,13 @@ class StateAppWidget extends StatelessWidget {
       case StateRendererType.EMPTY_SCREEN_STATE:
         break;
       default:
+        return const PopUpDialog(children:[AnimatedImage(animationName:AssetNames.lost)]);
     }
   }
 }
+
+
+
 
 class PopUpDialog extends StatelessWidget {
   final List<Widget> children;
@@ -94,8 +108,8 @@ class DialogContent extends StatelessWidget {
 }
 
 class AnimatedImage extends StatelessWidget {
-  final String imageName;
-  const AnimatedImage({required this.imageName,Key? key}) : super(key: key);
+  final String animationName;
+  const AnimatedImage({required this.animationName,Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
@@ -103,7 +117,7 @@ class AnimatedImage extends StatelessWidget {
         return SizedBox(
           width: constraints.maxWidth/AppSizePercents.per75,
           height: constraints.maxHeight/AppSizePercents.per75,
-          child: Image.asset(imageName),
+          child: Lottie.asset(animationName),
         );
       }
     );
