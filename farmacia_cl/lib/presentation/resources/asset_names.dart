@@ -1,7 +1,7 @@
 const String JSON_PATH = 'assets/json';
-class AssetNames{
+class AppAssetNames{
   //json names
-  static const sucess = "$JSON_PATH/success.json";
+  static const success = "$JSON_PATH/success.json";
   static const error = "$JSON_PATH/error.json";
   static const loading = "$JSON_PATH/loading.json";
   static const lost = "$JSON_PATH/lost.json";
