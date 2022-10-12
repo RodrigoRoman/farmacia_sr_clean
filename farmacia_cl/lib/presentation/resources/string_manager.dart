@@ -10,6 +10,8 @@ class AppStrings{
   static const String complete = 'Completar';
   static const String create = 'Crear';
   static const String edit = 'Editar';
+  static const String error = 'Error no identificado';
+
 
   static const String username = 'username_hint';
   static const String email = 'Email';

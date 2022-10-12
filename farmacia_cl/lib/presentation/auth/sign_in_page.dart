@@ -145,9 +145,9 @@ class ConfirmButton extends StatelessWidget {
       onPressed: (){
         context
           .read<SignInFormBloc>()
-          .add(SignInFormEvent.registerWithEmailAndPasswordPressed());
+          .add(const SignInFormEvent.registerWithEmailAndPasswordPressed());
       }, 
-      child: const Text(AppStrings.completar)
+      child: const Text(AppStrings.complete)
     );
   }
 }
