@@ -6,6 +6,7 @@ class AppStrings{
   static const String retry = 'Reintentar';
   static const String ok = 'Ok';
   static const String empty= '';
+  static const String success= 'Accion completada!';
   static const String search = 'Buscar';
   static const String complete = 'Completar';
   static const String create = 'Crear';
