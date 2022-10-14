@@ -1,22 +1,11 @@
 import 'package:farmacia_cl/presentation/resources/asset_names.dart';
 import 'package:farmacia_cl/presentation/resources/color_manager.dart';
+import 'package:farmacia_cl/presentation/resources/const_values.dart';
 import 'package:farmacia_cl/presentation/resources/constant_size_values.dart';
 import 'package:farmacia_cl/presentation/resources/string_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
-
-enum StateRendererType {
-  // POPUP STATES
-  POPUP_LOADING_STATE,
-  POPUP_ERROR_STATE,
-  POPUP_SUCCESS,
-  // FULL SCREEN STATES
-  FULL_SCREEN_LOADING_STATE,
-  FULL_SCREEN_ERROR_STATE,
-  CONTENT_SCREEN_STATE, // THE UI OF THE SCREEN
-  EMPTY_SCREEN_STATE // EMPTY VIEW WHEN WE RECEIVE NO DATA FROM API SIDE FOR LIST SCREEN
-}
 
 class StateRenderer extends StatelessWidget{
   final  String? message;
@@ -38,7 +27,7 @@ class StateRenderer extends StatelessWidget{
       stateRendererType:stateRendererType,
       title:title,
       message:message,
-      // retryActionFunction:retryActionFunction
+      retryActionFunction:retryActionFunction
       );
   }
 
@@ -48,7 +37,8 @@ class StateAppWidget extends StatelessWidget {
   final StateRendererType stateRendererType;
   final String message;
   final String? title;
-  const StateAppWidget({required this.stateRendererType,required this.title, message,Key? key}) :  message = message??AppStrings.empty, super(key: key);
+  final Function retryActionFunction;
+  const StateAppWidget({required this.stateRendererType,required this.title,required this.retryActionFunction, message,Key? key}) :  message = message??AppStrings.empty, super(key: key);
 
   @override
   Widget build(BuildContext context) {

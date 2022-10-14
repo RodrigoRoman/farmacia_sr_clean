@@ -1,4 +1,4 @@
-import 'package:farmacia_cl/application/auth/signInForm/sign_in_form_bloc.dart';
+import 'package:farmacia_cl/application/auth/sign_in_form/sign_in_form_bloc.dart';
 import 'package:farmacia_cl/injection.dart';
 import 'package:farmacia_cl/presentation/resources/constant_size_values.dart';
 import 'package:farmacia_cl/presentation/resources/string_manager.dart';
@@ -129,12 +129,7 @@ class PasswordTextForm extends StatelessWidget {
                 orElse: () => null,
               ),
             (r) => null
-          )
-        ,
-
-
-
-
+          ),
       decoration: const InputDecoration(
         icon:Icon(Icons.vpn_key),
         hintText: AppStrings.password
