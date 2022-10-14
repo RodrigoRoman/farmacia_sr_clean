@@ -3,6 +3,10 @@ import 'package:farmacia_cl/domain/core/failures.dart';
 import 'package:farmacia_cl/presentation/resources/constant_validation.dart';
 
 Either<ValueFailure<String>,String> validateStringNotEmpty(String input){
+  print('input demasiado corto?');
+  print(input.isNotEmpty);
+  print('input es  vacio');
+  print(input != '');
   if(input.isNotEmpty){
     return right(input);
   }else{
@@ -14,7 +18,7 @@ Either<ValueFailure<String>,String> validateValidEmail(String email){
   if(ConstantValidation.emailValidRegExp.hasMatch(email)){
     return right(email);
   }else{
-    return left(ValueFailure.empty(failedValue: email));
+    return left(ValueFailure.invalidEmail(failedValue: email));
   }
 }
 

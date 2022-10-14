@@ -17,7 +17,6 @@ abstract class ValueFailure<T> with _$ValueFailure<T>{
   }) = Multiline<T>;
   const factory ValueFailure.invalidEmail({
     required T failedValue,
-    required int max,
   }) = InvalidEmail<T>;
   const factory ValueFailure.passwordTooShort({
     required T failedValue,

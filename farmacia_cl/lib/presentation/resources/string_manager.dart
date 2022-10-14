@@ -11,7 +11,13 @@ class AppStrings{
   static const String complete = 'Completar';
   static const String create = 'Crear';
   static const String edit = 'Editar';
+  static const String invalidEmail = 'Elige un email valido';
   static const String error = 'Error no identificado';
+  static const String tooShort = 'Demasiado corto';
+  static const String capital = 'Incluya una mayuscula';
+  static const String special = 'Incluya simbolo \$&*+';
+  static const String number = 'Incluya un numero';
+  static const String isEmpty = 'Elemento vacio';
 
 
   static const String username = 'username_hint';

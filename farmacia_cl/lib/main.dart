@@ -13,9 +13,8 @@ import 'package:get_it/get_it.dart';
 void main() async {
 
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    // options: DefaultFirebaseOptions.currentPlatform,
-  );
+  configureInjection(Environment.prod);
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 

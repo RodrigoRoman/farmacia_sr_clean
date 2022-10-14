@@ -29,11 +29,11 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
       ));
     });
     on<RegisterWithEmailAndPasswordPressed>((event,emit){
-      _performActionOnAuthFacadeWithEmailAndPassword(_authFacade.registerWithEmailAndPassword);
+      _performActionOnAuthFacadeWithEmailAndPassword(_authFacade.registerWithEmailAndPassword,emit);
     }
     );
     on<SignInWithEmailAndPasswordPressed>((event,emit){
-      _performActionOnAuthFacadeWithEmailAndPassword(_authFacade.signInWithEmailAndPassword);
+      _performActionOnAuthFacadeWithEmailAndPassword(_authFacade.signInWithEmailAndPassword,emit);
     }
     );
     on<SignInWithGooglePressed>((event, emit) async{
@@ -48,16 +48,18 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
       ));
     });
     }
-  Stream<SignInFormState> _performActionOnAuthFacadeWithEmailAndPassword(
+  Future<SignInFormState?> _performActionOnAuthFacadeWithEmailAndPassword(
       Future <Either<AuthFailure,Unit>> Function({
         required EmailAdress emailAdress,
         required Password password
-      }) forwardedCall
-      )async*{
+      }) forwardedCall, Emitter emit
+      )async{
+        print('entered!!! performActionOnAuth');
         Either<AuthFailure,Unit>? failureOrSuccess;
         final isEmailValid = state.emailAdress.isValid();
         final isPasswordValid = state.password.isValid();
         if(isEmailValid && isPasswordValid){
+          print('inside valid');
           emit(state.copyWith(
             isSubmitting: true,
             authFailureOrSucessOption: none()
@@ -67,11 +69,14 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
             password: state.password
           );
         }
+        print('Not');
         emit(state.copyWith(
           isSubmitting: false,
           showErrorMessages: true,
           authFailureOrSucessOption: optionOf(failureOrSuccess),
-        ));
+        )
+        );
+        return null;
       }
 
 }
