@@ -9,3 +9,15 @@ enum StateRendererType {
   CONTENT_SCREEN_STATE, // THE UI OF THE SCREEN
   EMPTY_SCREEN_STATE // EMPTY VIEW WHEN WE RECEIVE NO DATA FROM API SIDE FOR LIST SCREEN
 }
+
+const popStateRender = [
+  StateRendererType.POPUP_LOADING_STATE,
+  StateRendererType.POPUP_ERROR_STATE,
+  StateRendererType.POPUP_SUCCESS,
+];
+const fullStateRender = [
+  StateRendererType.FULL_SCREEN_LOADING_STATE,
+  StateRendererType.FULL_SCREEN_ERROR_STATE,
+  // StateRendererType.CONTENT_SCREEN_STATE, // THE UI OF THE SCREEN
+  StateRendererType.EMPTY_SCREEN_STATE
+];

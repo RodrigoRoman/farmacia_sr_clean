@@ -27,12 +27,12 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
         authFailureOrSucessOption: none()
       ));
     });
-    on<RegisterWithEmailAndPasswordPressed>((event,emit){
-      _performActionOnAuthFacadeWithEmailAndPassword(_authFacade.registerWithEmailAndPassword,emit);
+    on<RegisterWithEmailAndPasswordPressed>((event,emit)async{
+      await _performActionOnAuthFacadeWithEmailAndPassword(_authFacade.registerWithEmailAndPassword,emit);
     }
     );
-    on<SignInWithEmailAndPasswordPressed>((event,emit){
-      _performActionOnAuthFacadeWithEmailAndPassword(_authFacade.signInWithEmailAndPassword,emit);
+    on<SignInWithEmailAndPasswordPressed>((event,emit)async{
+      await _performActionOnAuthFacadeWithEmailAndPassword(_authFacade.signInWithEmailAndPassword,emit);
     }
     );
     on<SignInWithGooglePressed>((event, emit) async{

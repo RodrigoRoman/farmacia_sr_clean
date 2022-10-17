@@ -1,8 +1,15 @@
+import 'package:farmacia_cl/application/auth/sign_in_form/sign_in_form_bloc.dart';
+import 'package:farmacia_cl/application/state_render/bloc/state_renderer_bloc.dart';
 import 'package:farmacia_cl/injection.dart';
 import 'package:farmacia_cl/presentation/auth/sign_in_page.dart';
+import 'package:farmacia_cl/presentation/common/state_renderer/app_state_renderer.dart';
+import 'package:farmacia_cl/presentation/resources/const_values.dart';
+import 'package:farmacia_cl/presentation/resources/constant_size_values.dart';
+import 'package:farmacia_cl/presentation/resources/string_manager.dart';
 import 'package:farmacia_cl/presentation/resources/themes.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:get_it/get_it.dart';
 
@@ -28,10 +35,57 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return  MaterialApp(
       theme: CustomTheme.lightTheme,
-      home: const Scaffold(body: SizedBox(child: AuthPage()))
+      home: 
+      BlocProvider(
+      create:(context) =>getIt<StateRendererBloc>(),
+      child:Scaffold(
+        body: BlocConsumer<StateRendererBloc,StateRendererState>(
+          listener: (context, state) {
+            if(popStateRender.contains(state.stateRender)){
+              print('popup dialog');
+              print(state.stateRender);
+              showPopUp(context,state.stateRender,state.message);
+              // return SizedBox(
+              //   child: AuthPage()
+              // );
+            }else{
+              dismissDialog(context);
+            }
+          },
+          builder:(context,state){
+            print('estado dentro de contexto');
+            print(state.stateRender);
+            if(fullStateRender.contains(state.stateRender)){
+              dismissDialog(context);
+              print('EEEEEEEEEEEEEEEE');
+              return SizedBox(
+                width: 400,
+                height: 600,
+                child: StateRenderer(
+                  stateRendererType: state.stateRender,
+                  message: state.message,
+                  retryActionFunction: state.retryAction,
+                ),
+              );
+            }else{
+              dismissDialog(context);
+              return SizedBox(
+                width: 400,
+                height: 600,
+                child: AuthPage()
+              );
+            }
+          }
+      )
+        )
+      )
       );
   }
 }
+
+
+
+
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);

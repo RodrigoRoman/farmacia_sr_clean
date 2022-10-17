@@ -138,15 +138,20 @@ class AnimatedImage extends StatelessWidget {
   const AnimatedImage({required this.animationName,Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-      builder: (context,constraints) {
-        return SizedBox(
-          width: constraints.maxWidth/AppSizePercents.per75,
-          height: constraints.maxHeight/AppSizePercents.per75,
-          child: Lottie.asset(animationName),
-        );
-      }
+    return  SizedBox(
+      width: 400,
+      height: 400,
+      child: Lottie.asset(animationName),
     );
+    // LayoutBuilder(
+    //   builder: (context,constraints) {
+    //     return SizedBox(
+    //       width: constraints.maxWidth/AppSizePercents.per75,
+    //       height: constraints.maxHeight/AppSizePercents.per75,
+    //       child: Lottie.asset(animationName),
+    //     );
+    //   }
+    // );
   }
 }
 class StateMessage extends StatelessWidget {
@@ -172,14 +177,12 @@ class RetryButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-      builder: (context,constraints) {
-        return Center(
+    return Center(
           child: Padding(
             padding: const EdgeInsets.all(AppSize.s8),
             child: SizedBox(
-              width: constraints.maxWidth/AppSizePercents.per75,
-              height: constraints.maxHeight/AppSizePercents.per75,
+              width: 70,
+              height: 70,
               child: ElevatedButton(
                 child: Text(buttonTitle),
                 onPressed: ()=>print('buttonTitlePressed'),
@@ -187,8 +190,24 @@ class RetryButton extends StatelessWidget {
             ),
           ),
         );
-      }
-    );
+    
+    // return LayoutBuilder(
+    //   builder: (context,constraints) {
+    //     return Center(
+    //       child: Padding(
+    //         padding: const EdgeInsets.all(AppSize.s8),
+    //         child: SizedBox(
+    //           width: constraints.maxWidth/AppSizePercents.per75,
+    //           height: constraints.maxHeight/AppSizePercents.per75,
+    //           child: ElevatedButton(
+    //             child: Text(buttonTitle),
+    //             onPressed: ()=>print('buttonTitlePressed'),
+    //           ),
+    //         ),
+    //       ),
+    //     );
+    //   }
+    // );
   }
 }
 
@@ -207,3 +226,34 @@ class ItemInColumn extends StatelessWidget {
     );
   }
 }
+
+//Remove existing Dialog
+dismissDialog(BuildContext context){
+      if(_isThereCurrentDialogShowing(context)){
+        Navigator.of(context,rootNavigator: true).pop(true);
+
+      }
+    }
+
+//Check if there is a Dialog
+_isThereCurrentDialogShowing(BuildContext context)=> ModalRoute.of(context)?.isCurrent != true; 
+
+//Triger PopUp 
+showPopUp(BuildContext context, StateRendererType stateRendererType,String message,
+  {String title = AppStrings.empty}){
+    WidgetsBinding.instance.addPostFrameCallback((_)=>
+      showDialog(
+        context: context, 
+        builder: (BuildContext context)=>SizedBox(
+          height: AppSize.s22,
+          width: AppSize.s12,
+          child: StateRenderer(
+            stateRendererType: stateRendererType, 
+            message: message,
+            title: title,
+            retryActionFunction: (){}
+            ),
+        )
+          )
+      );
+  }
