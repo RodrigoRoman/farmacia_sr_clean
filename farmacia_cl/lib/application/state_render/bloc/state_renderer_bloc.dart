@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:farmacia_cl/presentation/resources/const_values.dart';
+import 'package:farmacia_cl/presentation/resources/string_manager.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
@@ -24,6 +25,14 @@ class StateRendererBloc extends Bloc<StateRendererEvent, StateRendererState> {
         message: event.message,
         retryAction: ()=>print('clicked'),
         stateRender: StateRendererType.POPUP_ERROR_STATE
+      ));
+    });
+    on<PopUpServerError>((event, emit) {
+      emit(state.copyWith(
+        title: event.title,
+        message: event.message,
+        retryAction: ()=>print('clicked'),
+        stateRender: StateRendererType.POPUP_SERVER_ERROR_STATE
       ));
     });
     on<PopUpLoading>((event, emit) {

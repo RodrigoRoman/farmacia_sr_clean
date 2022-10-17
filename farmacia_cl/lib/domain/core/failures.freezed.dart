@@ -24,6 +24,7 @@ mixin _$ValueFailure<T> {
     required TResult Function(T failedValue, int max) multiline,
     required TResult Function(T failedValue) invalidEmail,
     required TResult Function(T failedValue, int max) passwordTooShort,
+    required TResult Function(T failedValue) passwordDoesNotMatch,
     required TResult Function(T failedValue)
         passwordMustContainSpecialCharacter,
     required TResult Function(T failedValue) passwordMustContainCapitalLetter,
@@ -37,6 +38,7 @@ mixin _$ValueFailure<T> {
     TResult Function(T failedValue, int max)? multiline,
     TResult Function(T failedValue)? invalidEmail,
     TResult Function(T failedValue, int max)? passwordTooShort,
+    TResult Function(T failedValue)? passwordDoesNotMatch,
     TResult Function(T failedValue)? passwordMustContainSpecialCharacter,
     TResult Function(T failedValue)? passwordMustContainCapitalLetter,
     TResult Function(T failedValue)? passwordMustContainNumber,
@@ -49,6 +51,7 @@ mixin _$ValueFailure<T> {
     TResult Function(T failedValue, int max)? multiline,
     TResult Function(T failedValue)? invalidEmail,
     TResult Function(T failedValue, int max)? passwordTooShort,
+    TResult Function(T failedValue)? passwordDoesNotMatch,
     TResult Function(T failedValue)? passwordMustContainSpecialCharacter,
     TResult Function(T failedValue)? passwordMustContainCapitalLetter,
     TResult Function(T failedValue)? passwordMustContainNumber,
@@ -62,6 +65,8 @@ mixin _$ValueFailure<T> {
     required TResult Function(Multiline<T> value) multiline,
     required TResult Function(InvalidEmail<T> value) invalidEmail,
     required TResult Function(PassWordTooShort<T> value) passwordTooShort,
+    required TResult Function(PassWordDoesNotMatch<T> value)
+        passwordDoesNotMatch,
     required TResult Function(PasswordMustContainSpecialCharacter<T> value)
         passwordMustContainSpecialCharacter,
     required TResult Function(PasswordMustContainCapitalLetter<T> value)
@@ -77,6 +82,7 @@ mixin _$ValueFailure<T> {
     TResult Function(Multiline<T> value)? multiline,
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(PassWordTooShort<T> value)? passwordTooShort,
+    TResult Function(PassWordDoesNotMatch<T> value)? passwordDoesNotMatch,
     TResult Function(PasswordMustContainSpecialCharacter<T> value)?
         passwordMustContainSpecialCharacter,
     TResult Function(PasswordMustContainCapitalLetter<T> value)?
@@ -92,6 +98,7 @@ mixin _$ValueFailure<T> {
     TResult Function(Multiline<T> value)? multiline,
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(PassWordTooShort<T> value)? passwordTooShort,
+    TResult Function(PassWordDoesNotMatch<T> value)? passwordDoesNotMatch,
     TResult Function(PasswordMustContainSpecialCharacter<T> value)?
         passwordMustContainSpecialCharacter,
     TResult Function(PasswordMustContainCapitalLetter<T> value)?
@@ -221,6 +228,7 @@ class _$ExceedingLength<T> implements ExceedingLength<T> {
     required TResult Function(T failedValue, int max) multiline,
     required TResult Function(T failedValue) invalidEmail,
     required TResult Function(T failedValue, int max) passwordTooShort,
+    required TResult Function(T failedValue) passwordDoesNotMatch,
     required TResult Function(T failedValue)
         passwordMustContainSpecialCharacter,
     required TResult Function(T failedValue) passwordMustContainCapitalLetter,
@@ -237,6 +245,7 @@ class _$ExceedingLength<T> implements ExceedingLength<T> {
     TResult Function(T failedValue, int max)? multiline,
     TResult Function(T failedValue)? invalidEmail,
     TResult Function(T failedValue, int max)? passwordTooShort,
+    TResult Function(T failedValue)? passwordDoesNotMatch,
     TResult Function(T failedValue)? passwordMustContainSpecialCharacter,
     TResult Function(T failedValue)? passwordMustContainCapitalLetter,
     TResult Function(T failedValue)? passwordMustContainNumber,
@@ -252,6 +261,7 @@ class _$ExceedingLength<T> implements ExceedingLength<T> {
     TResult Function(T failedValue, int max)? multiline,
     TResult Function(T failedValue)? invalidEmail,
     TResult Function(T failedValue, int max)? passwordTooShort,
+    TResult Function(T failedValue)? passwordDoesNotMatch,
     TResult Function(T failedValue)? passwordMustContainSpecialCharacter,
     TResult Function(T failedValue)? passwordMustContainCapitalLetter,
     TResult Function(T failedValue)? passwordMustContainNumber,
@@ -271,6 +281,8 @@ class _$ExceedingLength<T> implements ExceedingLength<T> {
     required TResult Function(Multiline<T> value) multiline,
     required TResult Function(InvalidEmail<T> value) invalidEmail,
     required TResult Function(PassWordTooShort<T> value) passwordTooShort,
+    required TResult Function(PassWordDoesNotMatch<T> value)
+        passwordDoesNotMatch,
     required TResult Function(PasswordMustContainSpecialCharacter<T> value)
         passwordMustContainSpecialCharacter,
     required TResult Function(PasswordMustContainCapitalLetter<T> value)
@@ -289,6 +301,7 @@ class _$ExceedingLength<T> implements ExceedingLength<T> {
     TResult Function(Multiline<T> value)? multiline,
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(PassWordTooShort<T> value)? passwordTooShort,
+    TResult Function(PassWordDoesNotMatch<T> value)? passwordDoesNotMatch,
     TResult Function(PasswordMustContainSpecialCharacter<T> value)?
         passwordMustContainSpecialCharacter,
     TResult Function(PasswordMustContainCapitalLetter<T> value)?
@@ -307,6 +320,7 @@ class _$ExceedingLength<T> implements ExceedingLength<T> {
     TResult Function(Multiline<T> value)? multiline,
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(PassWordTooShort<T> value)? passwordTooShort,
+    TResult Function(PassWordDoesNotMatch<T> value)? passwordDoesNotMatch,
     TResult Function(PasswordMustContainSpecialCharacter<T> value)?
         passwordMustContainSpecialCharacter,
     TResult Function(PasswordMustContainCapitalLetter<T> value)?
@@ -406,6 +420,7 @@ class _$Empty<T> implements Empty<T> {
     required TResult Function(T failedValue, int max) multiline,
     required TResult Function(T failedValue) invalidEmail,
     required TResult Function(T failedValue, int max) passwordTooShort,
+    required TResult Function(T failedValue) passwordDoesNotMatch,
     required TResult Function(T failedValue)
         passwordMustContainSpecialCharacter,
     required TResult Function(T failedValue) passwordMustContainCapitalLetter,
@@ -422,6 +437,7 @@ class _$Empty<T> implements Empty<T> {
     TResult Function(T failedValue, int max)? multiline,
     TResult Function(T failedValue)? invalidEmail,
     TResult Function(T failedValue, int max)? passwordTooShort,
+    TResult Function(T failedValue)? passwordDoesNotMatch,
     TResult Function(T failedValue)? passwordMustContainSpecialCharacter,
     TResult Function(T failedValue)? passwordMustContainCapitalLetter,
     TResult Function(T failedValue)? passwordMustContainNumber,
@@ -437,6 +453,7 @@ class _$Empty<T> implements Empty<T> {
     TResult Function(T failedValue, int max)? multiline,
     TResult Function(T failedValue)? invalidEmail,
     TResult Function(T failedValue, int max)? passwordTooShort,
+    TResult Function(T failedValue)? passwordDoesNotMatch,
     TResult Function(T failedValue)? passwordMustContainSpecialCharacter,
     TResult Function(T failedValue)? passwordMustContainCapitalLetter,
     TResult Function(T failedValue)? passwordMustContainNumber,
@@ -456,6 +473,8 @@ class _$Empty<T> implements Empty<T> {
     required TResult Function(Multiline<T> value) multiline,
     required TResult Function(InvalidEmail<T> value) invalidEmail,
     required TResult Function(PassWordTooShort<T> value) passwordTooShort,
+    required TResult Function(PassWordDoesNotMatch<T> value)
+        passwordDoesNotMatch,
     required TResult Function(PasswordMustContainSpecialCharacter<T> value)
         passwordMustContainSpecialCharacter,
     required TResult Function(PasswordMustContainCapitalLetter<T> value)
@@ -474,6 +493,7 @@ class _$Empty<T> implements Empty<T> {
     TResult Function(Multiline<T> value)? multiline,
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(PassWordTooShort<T> value)? passwordTooShort,
+    TResult Function(PassWordDoesNotMatch<T> value)? passwordDoesNotMatch,
     TResult Function(PasswordMustContainSpecialCharacter<T> value)?
         passwordMustContainSpecialCharacter,
     TResult Function(PasswordMustContainCapitalLetter<T> value)?
@@ -492,6 +512,7 @@ class _$Empty<T> implements Empty<T> {
     TResult Function(Multiline<T> value)? multiline,
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(PassWordTooShort<T> value)? passwordTooShort,
+    TResult Function(PassWordDoesNotMatch<T> value)? passwordDoesNotMatch,
     TResult Function(PasswordMustContainSpecialCharacter<T> value)?
         passwordMustContainSpecialCharacter,
     TResult Function(PasswordMustContainCapitalLetter<T> value)?
@@ -601,6 +622,7 @@ class _$Multiline<T> implements Multiline<T> {
     required TResult Function(T failedValue, int max) multiline,
     required TResult Function(T failedValue) invalidEmail,
     required TResult Function(T failedValue, int max) passwordTooShort,
+    required TResult Function(T failedValue) passwordDoesNotMatch,
     required TResult Function(T failedValue)
         passwordMustContainSpecialCharacter,
     required TResult Function(T failedValue) passwordMustContainCapitalLetter,
@@ -617,6 +639,7 @@ class _$Multiline<T> implements Multiline<T> {
     TResult Function(T failedValue, int max)? multiline,
     TResult Function(T failedValue)? invalidEmail,
     TResult Function(T failedValue, int max)? passwordTooShort,
+    TResult Function(T failedValue)? passwordDoesNotMatch,
     TResult Function(T failedValue)? passwordMustContainSpecialCharacter,
     TResult Function(T failedValue)? passwordMustContainCapitalLetter,
     TResult Function(T failedValue)? passwordMustContainNumber,
@@ -632,6 +655,7 @@ class _$Multiline<T> implements Multiline<T> {
     TResult Function(T failedValue, int max)? multiline,
     TResult Function(T failedValue)? invalidEmail,
     TResult Function(T failedValue, int max)? passwordTooShort,
+    TResult Function(T failedValue)? passwordDoesNotMatch,
     TResult Function(T failedValue)? passwordMustContainSpecialCharacter,
     TResult Function(T failedValue)? passwordMustContainCapitalLetter,
     TResult Function(T failedValue)? passwordMustContainNumber,
@@ -651,6 +675,8 @@ class _$Multiline<T> implements Multiline<T> {
     required TResult Function(Multiline<T> value) multiline,
     required TResult Function(InvalidEmail<T> value) invalidEmail,
     required TResult Function(PassWordTooShort<T> value) passwordTooShort,
+    required TResult Function(PassWordDoesNotMatch<T> value)
+        passwordDoesNotMatch,
     required TResult Function(PasswordMustContainSpecialCharacter<T> value)
         passwordMustContainSpecialCharacter,
     required TResult Function(PasswordMustContainCapitalLetter<T> value)
@@ -669,6 +695,7 @@ class _$Multiline<T> implements Multiline<T> {
     TResult Function(Multiline<T> value)? multiline,
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(PassWordTooShort<T> value)? passwordTooShort,
+    TResult Function(PassWordDoesNotMatch<T> value)? passwordDoesNotMatch,
     TResult Function(PasswordMustContainSpecialCharacter<T> value)?
         passwordMustContainSpecialCharacter,
     TResult Function(PasswordMustContainCapitalLetter<T> value)?
@@ -687,6 +714,7 @@ class _$Multiline<T> implements Multiline<T> {
     TResult Function(Multiline<T> value)? multiline,
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(PassWordTooShort<T> value)? passwordTooShort,
+    TResult Function(PassWordDoesNotMatch<T> value)? passwordDoesNotMatch,
     TResult Function(PasswordMustContainSpecialCharacter<T> value)?
         passwordMustContainSpecialCharacter,
     TResult Function(PasswordMustContainCapitalLetter<T> value)?
@@ -788,6 +816,7 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
     required TResult Function(T failedValue, int max) multiline,
     required TResult Function(T failedValue) invalidEmail,
     required TResult Function(T failedValue, int max) passwordTooShort,
+    required TResult Function(T failedValue) passwordDoesNotMatch,
     required TResult Function(T failedValue)
         passwordMustContainSpecialCharacter,
     required TResult Function(T failedValue) passwordMustContainCapitalLetter,
@@ -804,6 +833,7 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
     TResult Function(T failedValue, int max)? multiline,
     TResult Function(T failedValue)? invalidEmail,
     TResult Function(T failedValue, int max)? passwordTooShort,
+    TResult Function(T failedValue)? passwordDoesNotMatch,
     TResult Function(T failedValue)? passwordMustContainSpecialCharacter,
     TResult Function(T failedValue)? passwordMustContainCapitalLetter,
     TResult Function(T failedValue)? passwordMustContainNumber,
@@ -819,6 +849,7 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
     TResult Function(T failedValue, int max)? multiline,
     TResult Function(T failedValue)? invalidEmail,
     TResult Function(T failedValue, int max)? passwordTooShort,
+    TResult Function(T failedValue)? passwordDoesNotMatch,
     TResult Function(T failedValue)? passwordMustContainSpecialCharacter,
     TResult Function(T failedValue)? passwordMustContainCapitalLetter,
     TResult Function(T failedValue)? passwordMustContainNumber,
@@ -838,6 +869,8 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
     required TResult Function(Multiline<T> value) multiline,
     required TResult Function(InvalidEmail<T> value) invalidEmail,
     required TResult Function(PassWordTooShort<T> value) passwordTooShort,
+    required TResult Function(PassWordDoesNotMatch<T> value)
+        passwordDoesNotMatch,
     required TResult Function(PasswordMustContainSpecialCharacter<T> value)
         passwordMustContainSpecialCharacter,
     required TResult Function(PasswordMustContainCapitalLetter<T> value)
@@ -856,6 +889,7 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
     TResult Function(Multiline<T> value)? multiline,
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(PassWordTooShort<T> value)? passwordTooShort,
+    TResult Function(PassWordDoesNotMatch<T> value)? passwordDoesNotMatch,
     TResult Function(PasswordMustContainSpecialCharacter<T> value)?
         passwordMustContainSpecialCharacter,
     TResult Function(PasswordMustContainCapitalLetter<T> value)?
@@ -874,6 +908,7 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
     TResult Function(Multiline<T> value)? multiline,
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(PassWordTooShort<T> value)? passwordTooShort,
+    TResult Function(PassWordDoesNotMatch<T> value)? passwordDoesNotMatch,
     TResult Function(PasswordMustContainSpecialCharacter<T> value)?
         passwordMustContainSpecialCharacter,
     TResult Function(PasswordMustContainCapitalLetter<T> value)?
@@ -985,6 +1020,7 @@ class _$PassWordTooShort<T> implements PassWordTooShort<T> {
     required TResult Function(T failedValue, int max) multiline,
     required TResult Function(T failedValue) invalidEmail,
     required TResult Function(T failedValue, int max) passwordTooShort,
+    required TResult Function(T failedValue) passwordDoesNotMatch,
     required TResult Function(T failedValue)
         passwordMustContainSpecialCharacter,
     required TResult Function(T failedValue) passwordMustContainCapitalLetter,
@@ -1001,6 +1037,7 @@ class _$PassWordTooShort<T> implements PassWordTooShort<T> {
     TResult Function(T failedValue, int max)? multiline,
     TResult Function(T failedValue)? invalidEmail,
     TResult Function(T failedValue, int max)? passwordTooShort,
+    TResult Function(T failedValue)? passwordDoesNotMatch,
     TResult Function(T failedValue)? passwordMustContainSpecialCharacter,
     TResult Function(T failedValue)? passwordMustContainCapitalLetter,
     TResult Function(T failedValue)? passwordMustContainNumber,
@@ -1016,6 +1053,7 @@ class _$PassWordTooShort<T> implements PassWordTooShort<T> {
     TResult Function(T failedValue, int max)? multiline,
     TResult Function(T failedValue)? invalidEmail,
     TResult Function(T failedValue, int max)? passwordTooShort,
+    TResult Function(T failedValue)? passwordDoesNotMatch,
     TResult Function(T failedValue)? passwordMustContainSpecialCharacter,
     TResult Function(T failedValue)? passwordMustContainCapitalLetter,
     TResult Function(T failedValue)? passwordMustContainNumber,
@@ -1035,6 +1073,8 @@ class _$PassWordTooShort<T> implements PassWordTooShort<T> {
     required TResult Function(Multiline<T> value) multiline,
     required TResult Function(InvalidEmail<T> value) invalidEmail,
     required TResult Function(PassWordTooShort<T> value) passwordTooShort,
+    required TResult Function(PassWordDoesNotMatch<T> value)
+        passwordDoesNotMatch,
     required TResult Function(PasswordMustContainSpecialCharacter<T> value)
         passwordMustContainSpecialCharacter,
     required TResult Function(PasswordMustContainCapitalLetter<T> value)
@@ -1053,6 +1093,7 @@ class _$PassWordTooShort<T> implements PassWordTooShort<T> {
     TResult Function(Multiline<T> value)? multiline,
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(PassWordTooShort<T> value)? passwordTooShort,
+    TResult Function(PassWordDoesNotMatch<T> value)? passwordDoesNotMatch,
     TResult Function(PasswordMustContainSpecialCharacter<T> value)?
         passwordMustContainSpecialCharacter,
     TResult Function(PasswordMustContainCapitalLetter<T> value)?
@@ -1071,6 +1112,7 @@ class _$PassWordTooShort<T> implements PassWordTooShort<T> {
     TResult Function(Multiline<T> value)? multiline,
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(PassWordTooShort<T> value)? passwordTooShort,
+    TResult Function(PassWordDoesNotMatch<T> value)? passwordDoesNotMatch,
     TResult Function(PasswordMustContainSpecialCharacter<T> value)?
         passwordMustContainSpecialCharacter,
     TResult Function(PasswordMustContainCapitalLetter<T> value)?
@@ -1097,6 +1139,201 @@ abstract class PassWordTooShort<T> implements ValueFailure<T> {
   @override
   @JsonKey(ignore: true)
   _$$PassWordTooShortCopyWith<T, _$PassWordTooShort<T>> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$PassWordDoesNotMatchCopyWith<T, $Res>
+    implements $ValueFailureCopyWith<T, $Res> {
+  factory _$$PassWordDoesNotMatchCopyWith(_$PassWordDoesNotMatch<T> value,
+          $Res Function(_$PassWordDoesNotMatch<T>) then) =
+      __$$PassWordDoesNotMatchCopyWithImpl<T, $Res>;
+  @override
+  $Res call({T failedValue});
+}
+
+/// @nodoc
+class __$$PassWordDoesNotMatchCopyWithImpl<T, $Res>
+    extends _$ValueFailureCopyWithImpl<T, $Res>
+    implements _$$PassWordDoesNotMatchCopyWith<T, $Res> {
+  __$$PassWordDoesNotMatchCopyWithImpl(_$PassWordDoesNotMatch<T> _value,
+      $Res Function(_$PassWordDoesNotMatch<T>) _then)
+      : super(_value, (v) => _then(v as _$PassWordDoesNotMatch<T>));
+
+  @override
+  _$PassWordDoesNotMatch<T> get _value =>
+      super._value as _$PassWordDoesNotMatch<T>;
+
+  @override
+  $Res call({
+    Object? failedValue = freezed,
+  }) {
+    return _then(_$PassWordDoesNotMatch<T>(
+      failedValue: failedValue == freezed
+          ? _value.failedValue
+          : failedValue // ignore: cast_nullable_to_non_nullable
+              as T,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$PassWordDoesNotMatch<T> implements PassWordDoesNotMatch<T> {
+  const _$PassWordDoesNotMatch({required this.failedValue});
+
+  @override
+  final T failedValue;
+
+  @override
+  String toString() {
+    return 'ValueFailure<$T>.passwordDoesNotMatch(failedValue: $failedValue)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PassWordDoesNotMatch<T> &&
+            const DeepCollectionEquality()
+                .equals(other.failedValue, failedValue));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(failedValue));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$PassWordDoesNotMatchCopyWith<T, _$PassWordDoesNotMatch<T>> get copyWith =>
+      __$$PassWordDoesNotMatchCopyWithImpl<T, _$PassWordDoesNotMatch<T>>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(T failedValue, int max) exceedingLength,
+    required TResult Function(T failedValue) empty,
+    required TResult Function(T failedValue, int max) multiline,
+    required TResult Function(T failedValue) invalidEmail,
+    required TResult Function(T failedValue, int max) passwordTooShort,
+    required TResult Function(T failedValue) passwordDoesNotMatch,
+    required TResult Function(T failedValue)
+        passwordMustContainSpecialCharacter,
+    required TResult Function(T failedValue) passwordMustContainCapitalLetter,
+    required TResult Function(T failedValue) passwordMustContainNumber,
+  }) {
+    return passwordDoesNotMatch(failedValue);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(T failedValue, int max)? exceedingLength,
+    TResult Function(T failedValue)? empty,
+    TResult Function(T failedValue, int max)? multiline,
+    TResult Function(T failedValue)? invalidEmail,
+    TResult Function(T failedValue, int max)? passwordTooShort,
+    TResult Function(T failedValue)? passwordDoesNotMatch,
+    TResult Function(T failedValue)? passwordMustContainSpecialCharacter,
+    TResult Function(T failedValue)? passwordMustContainCapitalLetter,
+    TResult Function(T failedValue)? passwordMustContainNumber,
+  }) {
+    return passwordDoesNotMatch?.call(failedValue);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(T failedValue, int max)? exceedingLength,
+    TResult Function(T failedValue)? empty,
+    TResult Function(T failedValue, int max)? multiline,
+    TResult Function(T failedValue)? invalidEmail,
+    TResult Function(T failedValue, int max)? passwordTooShort,
+    TResult Function(T failedValue)? passwordDoesNotMatch,
+    TResult Function(T failedValue)? passwordMustContainSpecialCharacter,
+    TResult Function(T failedValue)? passwordMustContainCapitalLetter,
+    TResult Function(T failedValue)? passwordMustContainNumber,
+    required TResult orElse(),
+  }) {
+    if (passwordDoesNotMatch != null) {
+      return passwordDoesNotMatch(failedValue);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ExceedingLength<T> value) exceedingLength,
+    required TResult Function(Empty<T> value) empty,
+    required TResult Function(Multiline<T> value) multiline,
+    required TResult Function(InvalidEmail<T> value) invalidEmail,
+    required TResult Function(PassWordTooShort<T> value) passwordTooShort,
+    required TResult Function(PassWordDoesNotMatch<T> value)
+        passwordDoesNotMatch,
+    required TResult Function(PasswordMustContainSpecialCharacter<T> value)
+        passwordMustContainSpecialCharacter,
+    required TResult Function(PasswordMustContainCapitalLetter<T> value)
+        passwordMustContainCapitalLetter,
+    required TResult Function(PasswordMustContainNumber<T> value)
+        passwordMustContainNumber,
+  }) {
+    return passwordDoesNotMatch(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(ExceedingLength<T> value)? exceedingLength,
+    TResult Function(Empty<T> value)? empty,
+    TResult Function(Multiline<T> value)? multiline,
+    TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(PassWordTooShort<T> value)? passwordTooShort,
+    TResult Function(PassWordDoesNotMatch<T> value)? passwordDoesNotMatch,
+    TResult Function(PasswordMustContainSpecialCharacter<T> value)?
+        passwordMustContainSpecialCharacter,
+    TResult Function(PasswordMustContainCapitalLetter<T> value)?
+        passwordMustContainCapitalLetter,
+    TResult Function(PasswordMustContainNumber<T> value)?
+        passwordMustContainNumber,
+  }) {
+    return passwordDoesNotMatch?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ExceedingLength<T> value)? exceedingLength,
+    TResult Function(Empty<T> value)? empty,
+    TResult Function(Multiline<T> value)? multiline,
+    TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(PassWordTooShort<T> value)? passwordTooShort,
+    TResult Function(PassWordDoesNotMatch<T> value)? passwordDoesNotMatch,
+    TResult Function(PasswordMustContainSpecialCharacter<T> value)?
+        passwordMustContainSpecialCharacter,
+    TResult Function(PasswordMustContainCapitalLetter<T> value)?
+        passwordMustContainCapitalLetter,
+    TResult Function(PasswordMustContainNumber<T> value)?
+        passwordMustContainNumber,
+    required TResult orElse(),
+  }) {
+    if (passwordDoesNotMatch != null) {
+      return passwordDoesNotMatch(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class PassWordDoesNotMatch<T> implements ValueFailure<T> {
+  const factory PassWordDoesNotMatch({required final T failedValue}) =
+      _$PassWordDoesNotMatch<T>;
+
+  @override
+  T get failedValue;
+  @override
+  @JsonKey(ignore: true)
+  _$$PassWordDoesNotMatchCopyWith<T, _$PassWordDoesNotMatch<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1180,6 +1417,7 @@ class _$PasswordMustContainSpecialCharacter<T>
     required TResult Function(T failedValue, int max) multiline,
     required TResult Function(T failedValue) invalidEmail,
     required TResult Function(T failedValue, int max) passwordTooShort,
+    required TResult Function(T failedValue) passwordDoesNotMatch,
     required TResult Function(T failedValue)
         passwordMustContainSpecialCharacter,
     required TResult Function(T failedValue) passwordMustContainCapitalLetter,
@@ -1196,6 +1434,7 @@ class _$PasswordMustContainSpecialCharacter<T>
     TResult Function(T failedValue, int max)? multiline,
     TResult Function(T failedValue)? invalidEmail,
     TResult Function(T failedValue, int max)? passwordTooShort,
+    TResult Function(T failedValue)? passwordDoesNotMatch,
     TResult Function(T failedValue)? passwordMustContainSpecialCharacter,
     TResult Function(T failedValue)? passwordMustContainCapitalLetter,
     TResult Function(T failedValue)? passwordMustContainNumber,
@@ -1211,6 +1450,7 @@ class _$PasswordMustContainSpecialCharacter<T>
     TResult Function(T failedValue, int max)? multiline,
     TResult Function(T failedValue)? invalidEmail,
     TResult Function(T failedValue, int max)? passwordTooShort,
+    TResult Function(T failedValue)? passwordDoesNotMatch,
     TResult Function(T failedValue)? passwordMustContainSpecialCharacter,
     TResult Function(T failedValue)? passwordMustContainCapitalLetter,
     TResult Function(T failedValue)? passwordMustContainNumber,
@@ -1230,6 +1470,8 @@ class _$PasswordMustContainSpecialCharacter<T>
     required TResult Function(Multiline<T> value) multiline,
     required TResult Function(InvalidEmail<T> value) invalidEmail,
     required TResult Function(PassWordTooShort<T> value) passwordTooShort,
+    required TResult Function(PassWordDoesNotMatch<T> value)
+        passwordDoesNotMatch,
     required TResult Function(PasswordMustContainSpecialCharacter<T> value)
         passwordMustContainSpecialCharacter,
     required TResult Function(PasswordMustContainCapitalLetter<T> value)
@@ -1248,6 +1490,7 @@ class _$PasswordMustContainSpecialCharacter<T>
     TResult Function(Multiline<T> value)? multiline,
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(PassWordTooShort<T> value)? passwordTooShort,
+    TResult Function(PassWordDoesNotMatch<T> value)? passwordDoesNotMatch,
     TResult Function(PasswordMustContainSpecialCharacter<T> value)?
         passwordMustContainSpecialCharacter,
     TResult Function(PasswordMustContainCapitalLetter<T> value)?
@@ -1266,6 +1509,7 @@ class _$PasswordMustContainSpecialCharacter<T>
     TResult Function(Multiline<T> value)? multiline,
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(PassWordTooShort<T> value)? passwordTooShort,
+    TResult Function(PassWordDoesNotMatch<T> value)? passwordDoesNotMatch,
     TResult Function(PasswordMustContainSpecialCharacter<T> value)?
         passwordMustContainSpecialCharacter,
     TResult Function(PasswordMustContainCapitalLetter<T> value)?
@@ -1375,6 +1619,7 @@ class _$PasswordMustContainCapitalLetter<T>
     required TResult Function(T failedValue, int max) multiline,
     required TResult Function(T failedValue) invalidEmail,
     required TResult Function(T failedValue, int max) passwordTooShort,
+    required TResult Function(T failedValue) passwordDoesNotMatch,
     required TResult Function(T failedValue)
         passwordMustContainSpecialCharacter,
     required TResult Function(T failedValue) passwordMustContainCapitalLetter,
@@ -1391,6 +1636,7 @@ class _$PasswordMustContainCapitalLetter<T>
     TResult Function(T failedValue, int max)? multiline,
     TResult Function(T failedValue)? invalidEmail,
     TResult Function(T failedValue, int max)? passwordTooShort,
+    TResult Function(T failedValue)? passwordDoesNotMatch,
     TResult Function(T failedValue)? passwordMustContainSpecialCharacter,
     TResult Function(T failedValue)? passwordMustContainCapitalLetter,
     TResult Function(T failedValue)? passwordMustContainNumber,
@@ -1406,6 +1652,7 @@ class _$PasswordMustContainCapitalLetter<T>
     TResult Function(T failedValue, int max)? multiline,
     TResult Function(T failedValue)? invalidEmail,
     TResult Function(T failedValue, int max)? passwordTooShort,
+    TResult Function(T failedValue)? passwordDoesNotMatch,
     TResult Function(T failedValue)? passwordMustContainSpecialCharacter,
     TResult Function(T failedValue)? passwordMustContainCapitalLetter,
     TResult Function(T failedValue)? passwordMustContainNumber,
@@ -1425,6 +1672,8 @@ class _$PasswordMustContainCapitalLetter<T>
     required TResult Function(Multiline<T> value) multiline,
     required TResult Function(InvalidEmail<T> value) invalidEmail,
     required TResult Function(PassWordTooShort<T> value) passwordTooShort,
+    required TResult Function(PassWordDoesNotMatch<T> value)
+        passwordDoesNotMatch,
     required TResult Function(PasswordMustContainSpecialCharacter<T> value)
         passwordMustContainSpecialCharacter,
     required TResult Function(PasswordMustContainCapitalLetter<T> value)
@@ -1443,6 +1692,7 @@ class _$PasswordMustContainCapitalLetter<T>
     TResult Function(Multiline<T> value)? multiline,
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(PassWordTooShort<T> value)? passwordTooShort,
+    TResult Function(PassWordDoesNotMatch<T> value)? passwordDoesNotMatch,
     TResult Function(PasswordMustContainSpecialCharacter<T> value)?
         passwordMustContainSpecialCharacter,
     TResult Function(PasswordMustContainCapitalLetter<T> value)?
@@ -1461,6 +1711,7 @@ class _$PasswordMustContainCapitalLetter<T>
     TResult Function(Multiline<T> value)? multiline,
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(PassWordTooShort<T> value)? passwordTooShort,
+    TResult Function(PassWordDoesNotMatch<T> value)? passwordDoesNotMatch,
     TResult Function(PasswordMustContainSpecialCharacter<T> value)?
         passwordMustContainSpecialCharacter,
     TResult Function(PasswordMustContainCapitalLetter<T> value)?
@@ -1566,6 +1817,7 @@ class _$PasswordMustContainNumber<T> implements PasswordMustContainNumber<T> {
     required TResult Function(T failedValue, int max) multiline,
     required TResult Function(T failedValue) invalidEmail,
     required TResult Function(T failedValue, int max) passwordTooShort,
+    required TResult Function(T failedValue) passwordDoesNotMatch,
     required TResult Function(T failedValue)
         passwordMustContainSpecialCharacter,
     required TResult Function(T failedValue) passwordMustContainCapitalLetter,
@@ -1582,6 +1834,7 @@ class _$PasswordMustContainNumber<T> implements PasswordMustContainNumber<T> {
     TResult Function(T failedValue, int max)? multiline,
     TResult Function(T failedValue)? invalidEmail,
     TResult Function(T failedValue, int max)? passwordTooShort,
+    TResult Function(T failedValue)? passwordDoesNotMatch,
     TResult Function(T failedValue)? passwordMustContainSpecialCharacter,
     TResult Function(T failedValue)? passwordMustContainCapitalLetter,
     TResult Function(T failedValue)? passwordMustContainNumber,
@@ -1597,6 +1850,7 @@ class _$PasswordMustContainNumber<T> implements PasswordMustContainNumber<T> {
     TResult Function(T failedValue, int max)? multiline,
     TResult Function(T failedValue)? invalidEmail,
     TResult Function(T failedValue, int max)? passwordTooShort,
+    TResult Function(T failedValue)? passwordDoesNotMatch,
     TResult Function(T failedValue)? passwordMustContainSpecialCharacter,
     TResult Function(T failedValue)? passwordMustContainCapitalLetter,
     TResult Function(T failedValue)? passwordMustContainNumber,
@@ -1616,6 +1870,8 @@ class _$PasswordMustContainNumber<T> implements PasswordMustContainNumber<T> {
     required TResult Function(Multiline<T> value) multiline,
     required TResult Function(InvalidEmail<T> value) invalidEmail,
     required TResult Function(PassWordTooShort<T> value) passwordTooShort,
+    required TResult Function(PassWordDoesNotMatch<T> value)
+        passwordDoesNotMatch,
     required TResult Function(PasswordMustContainSpecialCharacter<T> value)
         passwordMustContainSpecialCharacter,
     required TResult Function(PasswordMustContainCapitalLetter<T> value)
@@ -1634,6 +1890,7 @@ class _$PasswordMustContainNumber<T> implements PasswordMustContainNumber<T> {
     TResult Function(Multiline<T> value)? multiline,
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(PassWordTooShort<T> value)? passwordTooShort,
+    TResult Function(PassWordDoesNotMatch<T> value)? passwordDoesNotMatch,
     TResult Function(PasswordMustContainSpecialCharacter<T> value)?
         passwordMustContainSpecialCharacter,
     TResult Function(PasswordMustContainCapitalLetter<T> value)?
@@ -1652,6 +1909,7 @@ class _$PasswordMustContainNumber<T> implements PasswordMustContainNumber<T> {
     TResult Function(Multiline<T> value)? multiline,
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(PassWordTooShort<T> value)? passwordTooShort,
+    TResult Function(PassWordDoesNotMatch<T> value)? passwordDoesNotMatch,
     TResult Function(PasswordMustContainSpecialCharacter<T> value)?
         passwordMustContainSpecialCharacter,
     TResult Function(PasswordMustContainCapitalLetter<T> value)?

@@ -20,6 +20,7 @@ mixin _$StateRendererEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String title, String message) popUpSuccess,
     required TResult Function(String title, String message) popUpError,
+    required TResult Function(String title, String message) popUpServerError,
     required TResult Function(String title, String message) popUpLoading,
     required TResult Function(String title, String message) fullErrorSreen,
     required TResult Function() contentScreen,
@@ -30,6 +31,7 @@ mixin _$StateRendererEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String title, String message)? popUpSuccess,
     TResult Function(String title, String message)? popUpError,
+    TResult Function(String title, String message)? popUpServerError,
     TResult Function(String title, String message)? popUpLoading,
     TResult Function(String title, String message)? fullErrorSreen,
     TResult Function()? contentScreen,
@@ -40,6 +42,7 @@ mixin _$StateRendererEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String title, String message)? popUpSuccess,
     TResult Function(String title, String message)? popUpError,
+    TResult Function(String title, String message)? popUpServerError,
     TResult Function(String title, String message)? popUpLoading,
     TResult Function(String title, String message)? fullErrorSreen,
     TResult Function()? contentScreen,
@@ -51,6 +54,7 @@ mixin _$StateRendererEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(PopUpSuccess value) popUpSuccess,
     required TResult Function(PopUpError value) popUpError,
+    required TResult Function(PopUpServerError value) popUpServerError,
     required TResult Function(PopUpLoading value) popUpLoading,
     required TResult Function(FullErrorSreen value) fullErrorSreen,
     required TResult Function(ContentScreen value) contentScreen,
@@ -61,6 +65,7 @@ mixin _$StateRendererEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(PopUpSuccess value)? popUpSuccess,
     TResult Function(PopUpError value)? popUpError,
+    TResult Function(PopUpServerError value)? popUpServerError,
     TResult Function(PopUpLoading value)? popUpLoading,
     TResult Function(FullErrorSreen value)? fullErrorSreen,
     TResult Function(ContentScreen value)? contentScreen,
@@ -71,6 +76,7 @@ mixin _$StateRendererEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(PopUpSuccess value)? popUpSuccess,
     TResult Function(PopUpError value)? popUpError,
+    TResult Function(PopUpServerError value)? popUpServerError,
     TResult Function(PopUpLoading value)? popUpLoading,
     TResult Function(FullErrorSreen value)? fullErrorSreen,
     TResult Function(ContentScreen value)? contentScreen,
@@ -174,6 +180,7 @@ class _$PopUpSuccess implements PopUpSuccess {
   TResult when<TResult extends Object?>({
     required TResult Function(String title, String message) popUpSuccess,
     required TResult Function(String title, String message) popUpError,
+    required TResult Function(String title, String message) popUpServerError,
     required TResult Function(String title, String message) popUpLoading,
     required TResult Function(String title, String message) fullErrorSreen,
     required TResult Function() contentScreen,
@@ -187,6 +194,7 @@ class _$PopUpSuccess implements PopUpSuccess {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String title, String message)? popUpSuccess,
     TResult Function(String title, String message)? popUpError,
+    TResult Function(String title, String message)? popUpServerError,
     TResult Function(String title, String message)? popUpLoading,
     TResult Function(String title, String message)? fullErrorSreen,
     TResult Function()? contentScreen,
@@ -200,6 +208,7 @@ class _$PopUpSuccess implements PopUpSuccess {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String title, String message)? popUpSuccess,
     TResult Function(String title, String message)? popUpError,
+    TResult Function(String title, String message)? popUpServerError,
     TResult Function(String title, String message)? popUpLoading,
     TResult Function(String title, String message)? fullErrorSreen,
     TResult Function()? contentScreen,
@@ -217,6 +226,7 @@ class _$PopUpSuccess implements PopUpSuccess {
   TResult map<TResult extends Object?>({
     required TResult Function(PopUpSuccess value) popUpSuccess,
     required TResult Function(PopUpError value) popUpError,
+    required TResult Function(PopUpServerError value) popUpServerError,
     required TResult Function(PopUpLoading value) popUpLoading,
     required TResult Function(FullErrorSreen value) fullErrorSreen,
     required TResult Function(ContentScreen value) contentScreen,
@@ -230,6 +240,7 @@ class _$PopUpSuccess implements PopUpSuccess {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(PopUpSuccess value)? popUpSuccess,
     TResult Function(PopUpError value)? popUpError,
+    TResult Function(PopUpServerError value)? popUpServerError,
     TResult Function(PopUpLoading value)? popUpLoading,
     TResult Function(FullErrorSreen value)? fullErrorSreen,
     TResult Function(ContentScreen value)? contentScreen,
@@ -243,6 +254,7 @@ class _$PopUpSuccess implements PopUpSuccess {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(PopUpSuccess value)? popUpSuccess,
     TResult Function(PopUpError value)? popUpError,
+    TResult Function(PopUpServerError value)? popUpServerError,
     TResult Function(PopUpLoading value)? popUpLoading,
     TResult Function(FullErrorSreen value)? fullErrorSreen,
     TResult Function(ContentScreen value)? contentScreen,
@@ -344,6 +356,7 @@ class _$PopUpError implements PopUpError {
   TResult when<TResult extends Object?>({
     required TResult Function(String title, String message) popUpSuccess,
     required TResult Function(String title, String message) popUpError,
+    required TResult Function(String title, String message) popUpServerError,
     required TResult Function(String title, String message) popUpLoading,
     required TResult Function(String title, String message) fullErrorSreen,
     required TResult Function() contentScreen,
@@ -357,6 +370,7 @@ class _$PopUpError implements PopUpError {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String title, String message)? popUpSuccess,
     TResult Function(String title, String message)? popUpError,
+    TResult Function(String title, String message)? popUpServerError,
     TResult Function(String title, String message)? popUpLoading,
     TResult Function(String title, String message)? fullErrorSreen,
     TResult Function()? contentScreen,
@@ -370,6 +384,7 @@ class _$PopUpError implements PopUpError {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String title, String message)? popUpSuccess,
     TResult Function(String title, String message)? popUpError,
+    TResult Function(String title, String message)? popUpServerError,
     TResult Function(String title, String message)? popUpLoading,
     TResult Function(String title, String message)? fullErrorSreen,
     TResult Function()? contentScreen,
@@ -387,6 +402,7 @@ class _$PopUpError implements PopUpError {
   TResult map<TResult extends Object?>({
     required TResult Function(PopUpSuccess value) popUpSuccess,
     required TResult Function(PopUpError value) popUpError,
+    required TResult Function(PopUpServerError value) popUpServerError,
     required TResult Function(PopUpLoading value) popUpLoading,
     required TResult Function(FullErrorSreen value) fullErrorSreen,
     required TResult Function(ContentScreen value) contentScreen,
@@ -400,6 +416,7 @@ class _$PopUpError implements PopUpError {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(PopUpSuccess value)? popUpSuccess,
     TResult Function(PopUpError value)? popUpError,
+    TResult Function(PopUpServerError value)? popUpServerError,
     TResult Function(PopUpLoading value)? popUpLoading,
     TResult Function(FullErrorSreen value)? fullErrorSreen,
     TResult Function(ContentScreen value)? contentScreen,
@@ -413,6 +430,7 @@ class _$PopUpError implements PopUpError {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(PopUpSuccess value)? popUpSuccess,
     TResult Function(PopUpError value)? popUpError,
+    TResult Function(PopUpServerError value)? popUpServerError,
     TResult Function(PopUpLoading value)? popUpLoading,
     TResult Function(FullErrorSreen value)? fullErrorSreen,
     TResult Function(ContentScreen value)? contentScreen,
@@ -434,6 +452,182 @@ abstract class PopUpError implements StateRendererEvent {
   String get message;
   @JsonKey(ignore: true)
   _$$PopUpErrorCopyWith<_$PopUpError> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$PopUpServerErrorCopyWith<$Res> {
+  factory _$$PopUpServerErrorCopyWith(
+          _$PopUpServerError value, $Res Function(_$PopUpServerError) then) =
+      __$$PopUpServerErrorCopyWithImpl<$Res>;
+  $Res call({String title, String message});
+}
+
+/// @nodoc
+class __$$PopUpServerErrorCopyWithImpl<$Res>
+    extends _$StateRendererEventCopyWithImpl<$Res>
+    implements _$$PopUpServerErrorCopyWith<$Res> {
+  __$$PopUpServerErrorCopyWithImpl(
+      _$PopUpServerError _value, $Res Function(_$PopUpServerError) _then)
+      : super(_value, (v) => _then(v as _$PopUpServerError));
+
+  @override
+  _$PopUpServerError get _value => super._value as _$PopUpServerError;
+
+  @override
+  $Res call({
+    Object? title = freezed,
+    Object? message = freezed,
+  }) {
+    return _then(_$PopUpServerError(
+      title == freezed
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      message == freezed
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$PopUpServerError implements PopUpServerError {
+  const _$PopUpServerError(this.title, this.message);
+
+  @override
+  final String title;
+  @override
+  final String message;
+
+  @override
+  String toString() {
+    return 'StateRendererEvent.popUpServerError(title: $title, message: $message)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PopUpServerError &&
+            const DeepCollectionEquality().equals(other.title, title) &&
+            const DeepCollectionEquality().equals(other.message, message));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(title),
+      const DeepCollectionEquality().hash(message));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$PopUpServerErrorCopyWith<_$PopUpServerError> get copyWith =>
+      __$$PopUpServerErrorCopyWithImpl<_$PopUpServerError>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String title, String message) popUpSuccess,
+    required TResult Function(String title, String message) popUpError,
+    required TResult Function(String title, String message) popUpServerError,
+    required TResult Function(String title, String message) popUpLoading,
+    required TResult Function(String title, String message) fullErrorSreen,
+    required TResult Function() contentScreen,
+    required TResult Function() empty,
+  }) {
+    return popUpServerError(title, message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String title, String message)? popUpSuccess,
+    TResult Function(String title, String message)? popUpError,
+    TResult Function(String title, String message)? popUpServerError,
+    TResult Function(String title, String message)? popUpLoading,
+    TResult Function(String title, String message)? fullErrorSreen,
+    TResult Function()? contentScreen,
+    TResult Function()? empty,
+  }) {
+    return popUpServerError?.call(title, message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String title, String message)? popUpSuccess,
+    TResult Function(String title, String message)? popUpError,
+    TResult Function(String title, String message)? popUpServerError,
+    TResult Function(String title, String message)? popUpLoading,
+    TResult Function(String title, String message)? fullErrorSreen,
+    TResult Function()? contentScreen,
+    TResult Function()? empty,
+    required TResult orElse(),
+  }) {
+    if (popUpServerError != null) {
+      return popUpServerError(title, message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(PopUpSuccess value) popUpSuccess,
+    required TResult Function(PopUpError value) popUpError,
+    required TResult Function(PopUpServerError value) popUpServerError,
+    required TResult Function(PopUpLoading value) popUpLoading,
+    required TResult Function(FullErrorSreen value) fullErrorSreen,
+    required TResult Function(ContentScreen value) contentScreen,
+    required TResult Function(EmptySreen value) empty,
+  }) {
+    return popUpServerError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(PopUpSuccess value)? popUpSuccess,
+    TResult Function(PopUpError value)? popUpError,
+    TResult Function(PopUpServerError value)? popUpServerError,
+    TResult Function(PopUpLoading value)? popUpLoading,
+    TResult Function(FullErrorSreen value)? fullErrorSreen,
+    TResult Function(ContentScreen value)? contentScreen,
+    TResult Function(EmptySreen value)? empty,
+  }) {
+    return popUpServerError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(PopUpSuccess value)? popUpSuccess,
+    TResult Function(PopUpError value)? popUpError,
+    TResult Function(PopUpServerError value)? popUpServerError,
+    TResult Function(PopUpLoading value)? popUpLoading,
+    TResult Function(FullErrorSreen value)? fullErrorSreen,
+    TResult Function(ContentScreen value)? contentScreen,
+    TResult Function(EmptySreen value)? empty,
+    required TResult orElse(),
+  }) {
+    if (popUpServerError != null) {
+      return popUpServerError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class PopUpServerError implements StateRendererEvent {
+  const factory PopUpServerError(final String title, final String message) =
+      _$PopUpServerError;
+
+  String get title;
+  String get message;
+  @JsonKey(ignore: true)
+  _$$PopUpServerErrorCopyWith<_$PopUpServerError> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -514,6 +708,7 @@ class _$PopUpLoading implements PopUpLoading {
   TResult when<TResult extends Object?>({
     required TResult Function(String title, String message) popUpSuccess,
     required TResult Function(String title, String message) popUpError,
+    required TResult Function(String title, String message) popUpServerError,
     required TResult Function(String title, String message) popUpLoading,
     required TResult Function(String title, String message) fullErrorSreen,
     required TResult Function() contentScreen,
@@ -527,6 +722,7 @@ class _$PopUpLoading implements PopUpLoading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String title, String message)? popUpSuccess,
     TResult Function(String title, String message)? popUpError,
+    TResult Function(String title, String message)? popUpServerError,
     TResult Function(String title, String message)? popUpLoading,
     TResult Function(String title, String message)? fullErrorSreen,
     TResult Function()? contentScreen,
@@ -540,6 +736,7 @@ class _$PopUpLoading implements PopUpLoading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String title, String message)? popUpSuccess,
     TResult Function(String title, String message)? popUpError,
+    TResult Function(String title, String message)? popUpServerError,
     TResult Function(String title, String message)? popUpLoading,
     TResult Function(String title, String message)? fullErrorSreen,
     TResult Function()? contentScreen,
@@ -557,6 +754,7 @@ class _$PopUpLoading implements PopUpLoading {
   TResult map<TResult extends Object?>({
     required TResult Function(PopUpSuccess value) popUpSuccess,
     required TResult Function(PopUpError value) popUpError,
+    required TResult Function(PopUpServerError value) popUpServerError,
     required TResult Function(PopUpLoading value) popUpLoading,
     required TResult Function(FullErrorSreen value) fullErrorSreen,
     required TResult Function(ContentScreen value) contentScreen,
@@ -570,6 +768,7 @@ class _$PopUpLoading implements PopUpLoading {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(PopUpSuccess value)? popUpSuccess,
     TResult Function(PopUpError value)? popUpError,
+    TResult Function(PopUpServerError value)? popUpServerError,
     TResult Function(PopUpLoading value)? popUpLoading,
     TResult Function(FullErrorSreen value)? fullErrorSreen,
     TResult Function(ContentScreen value)? contentScreen,
@@ -583,6 +782,7 @@ class _$PopUpLoading implements PopUpLoading {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(PopUpSuccess value)? popUpSuccess,
     TResult Function(PopUpError value)? popUpError,
+    TResult Function(PopUpServerError value)? popUpServerError,
     TResult Function(PopUpLoading value)? popUpLoading,
     TResult Function(FullErrorSreen value)? fullErrorSreen,
     TResult Function(ContentScreen value)? contentScreen,
@@ -684,6 +884,7 @@ class _$FullErrorSreen implements FullErrorSreen {
   TResult when<TResult extends Object?>({
     required TResult Function(String title, String message) popUpSuccess,
     required TResult Function(String title, String message) popUpError,
+    required TResult Function(String title, String message) popUpServerError,
     required TResult Function(String title, String message) popUpLoading,
     required TResult Function(String title, String message) fullErrorSreen,
     required TResult Function() contentScreen,
@@ -697,6 +898,7 @@ class _$FullErrorSreen implements FullErrorSreen {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String title, String message)? popUpSuccess,
     TResult Function(String title, String message)? popUpError,
+    TResult Function(String title, String message)? popUpServerError,
     TResult Function(String title, String message)? popUpLoading,
     TResult Function(String title, String message)? fullErrorSreen,
     TResult Function()? contentScreen,
@@ -710,6 +912,7 @@ class _$FullErrorSreen implements FullErrorSreen {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String title, String message)? popUpSuccess,
     TResult Function(String title, String message)? popUpError,
+    TResult Function(String title, String message)? popUpServerError,
     TResult Function(String title, String message)? popUpLoading,
     TResult Function(String title, String message)? fullErrorSreen,
     TResult Function()? contentScreen,
@@ -727,6 +930,7 @@ class _$FullErrorSreen implements FullErrorSreen {
   TResult map<TResult extends Object?>({
     required TResult Function(PopUpSuccess value) popUpSuccess,
     required TResult Function(PopUpError value) popUpError,
+    required TResult Function(PopUpServerError value) popUpServerError,
     required TResult Function(PopUpLoading value) popUpLoading,
     required TResult Function(FullErrorSreen value) fullErrorSreen,
     required TResult Function(ContentScreen value) contentScreen,
@@ -740,6 +944,7 @@ class _$FullErrorSreen implements FullErrorSreen {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(PopUpSuccess value)? popUpSuccess,
     TResult Function(PopUpError value)? popUpError,
+    TResult Function(PopUpServerError value)? popUpServerError,
     TResult Function(PopUpLoading value)? popUpLoading,
     TResult Function(FullErrorSreen value)? fullErrorSreen,
     TResult Function(ContentScreen value)? contentScreen,
@@ -753,6 +958,7 @@ class _$FullErrorSreen implements FullErrorSreen {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(PopUpSuccess value)? popUpSuccess,
     TResult Function(PopUpError value)? popUpError,
+    TResult Function(PopUpServerError value)? popUpServerError,
     TResult Function(PopUpLoading value)? popUpLoading,
     TResult Function(FullErrorSreen value)? fullErrorSreen,
     TResult Function(ContentScreen value)? contentScreen,
@@ -820,6 +1026,7 @@ class _$ContentScreen implements ContentScreen {
   TResult when<TResult extends Object?>({
     required TResult Function(String title, String message) popUpSuccess,
     required TResult Function(String title, String message) popUpError,
+    required TResult Function(String title, String message) popUpServerError,
     required TResult Function(String title, String message) popUpLoading,
     required TResult Function(String title, String message) fullErrorSreen,
     required TResult Function() contentScreen,
@@ -833,6 +1040,7 @@ class _$ContentScreen implements ContentScreen {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String title, String message)? popUpSuccess,
     TResult Function(String title, String message)? popUpError,
+    TResult Function(String title, String message)? popUpServerError,
     TResult Function(String title, String message)? popUpLoading,
     TResult Function(String title, String message)? fullErrorSreen,
     TResult Function()? contentScreen,
@@ -846,6 +1054,7 @@ class _$ContentScreen implements ContentScreen {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String title, String message)? popUpSuccess,
     TResult Function(String title, String message)? popUpError,
+    TResult Function(String title, String message)? popUpServerError,
     TResult Function(String title, String message)? popUpLoading,
     TResult Function(String title, String message)? fullErrorSreen,
     TResult Function()? contentScreen,
@@ -863,6 +1072,7 @@ class _$ContentScreen implements ContentScreen {
   TResult map<TResult extends Object?>({
     required TResult Function(PopUpSuccess value) popUpSuccess,
     required TResult Function(PopUpError value) popUpError,
+    required TResult Function(PopUpServerError value) popUpServerError,
     required TResult Function(PopUpLoading value) popUpLoading,
     required TResult Function(FullErrorSreen value) fullErrorSreen,
     required TResult Function(ContentScreen value) contentScreen,
@@ -876,6 +1086,7 @@ class _$ContentScreen implements ContentScreen {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(PopUpSuccess value)? popUpSuccess,
     TResult Function(PopUpError value)? popUpError,
+    TResult Function(PopUpServerError value)? popUpServerError,
     TResult Function(PopUpLoading value)? popUpLoading,
     TResult Function(FullErrorSreen value)? fullErrorSreen,
     TResult Function(ContentScreen value)? contentScreen,
@@ -889,6 +1100,7 @@ class _$ContentScreen implements ContentScreen {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(PopUpSuccess value)? popUpSuccess,
     TResult Function(PopUpError value)? popUpError,
+    TResult Function(PopUpServerError value)? popUpServerError,
     TResult Function(PopUpLoading value)? popUpLoading,
     TResult Function(FullErrorSreen value)? fullErrorSreen,
     TResult Function(ContentScreen value)? contentScreen,
@@ -949,6 +1161,7 @@ class _$EmptySreen implements EmptySreen {
   TResult when<TResult extends Object?>({
     required TResult Function(String title, String message) popUpSuccess,
     required TResult Function(String title, String message) popUpError,
+    required TResult Function(String title, String message) popUpServerError,
     required TResult Function(String title, String message) popUpLoading,
     required TResult Function(String title, String message) fullErrorSreen,
     required TResult Function() contentScreen,
@@ -962,6 +1175,7 @@ class _$EmptySreen implements EmptySreen {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String title, String message)? popUpSuccess,
     TResult Function(String title, String message)? popUpError,
+    TResult Function(String title, String message)? popUpServerError,
     TResult Function(String title, String message)? popUpLoading,
     TResult Function(String title, String message)? fullErrorSreen,
     TResult Function()? contentScreen,
@@ -975,6 +1189,7 @@ class _$EmptySreen implements EmptySreen {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String title, String message)? popUpSuccess,
     TResult Function(String title, String message)? popUpError,
+    TResult Function(String title, String message)? popUpServerError,
     TResult Function(String title, String message)? popUpLoading,
     TResult Function(String title, String message)? fullErrorSreen,
     TResult Function()? contentScreen,
@@ -992,6 +1207,7 @@ class _$EmptySreen implements EmptySreen {
   TResult map<TResult extends Object?>({
     required TResult Function(PopUpSuccess value) popUpSuccess,
     required TResult Function(PopUpError value) popUpError,
+    required TResult Function(PopUpServerError value) popUpServerError,
     required TResult Function(PopUpLoading value) popUpLoading,
     required TResult Function(FullErrorSreen value) fullErrorSreen,
     required TResult Function(ContentScreen value) contentScreen,
@@ -1005,6 +1221,7 @@ class _$EmptySreen implements EmptySreen {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(PopUpSuccess value)? popUpSuccess,
     TResult Function(PopUpError value)? popUpError,
+    TResult Function(PopUpServerError value)? popUpServerError,
     TResult Function(PopUpLoading value)? popUpLoading,
     TResult Function(FullErrorSreen value)? fullErrorSreen,
     TResult Function(ContentScreen value)? contentScreen,
@@ -1018,6 +1235,7 @@ class _$EmptySreen implements EmptySreen {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(PopUpSuccess value)? popUpSuccess,
     TResult Function(PopUpError value)? popUpError,
+    TResult Function(PopUpServerError value)? popUpServerError,
     TResult Function(PopUpLoading value)? popUpLoading,
     TResult Function(FullErrorSreen value)? fullErrorSreen,
     TResult Function(ContentScreen value)? contentScreen,

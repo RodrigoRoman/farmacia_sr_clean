@@ -2,6 +2,7 @@ enum StateRendererType {
   // POPUP STATES
   POPUP_LOADING_STATE,
   POPUP_ERROR_STATE,
+  POPUP_SERVER_ERROR_STATE,
   POPUP_SUCCESS,
   // FULL SCREEN STATES
   FULL_SCREEN_LOADING_STATE,
@@ -13,6 +14,7 @@ enum StateRendererType {
 const popStateRender = [
   StateRendererType.POPUP_LOADING_STATE,
   StateRendererType.POPUP_ERROR_STATE,
+  StateRendererType.POPUP_SERVER_ERROR_STATE,
   StateRendererType.POPUP_SUCCESS,
 ];
 const fullStateRender = [

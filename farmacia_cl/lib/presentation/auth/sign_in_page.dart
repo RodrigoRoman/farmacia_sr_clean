@@ -20,12 +20,12 @@ class _AuthPageState extends State<AuthPage> {
       create:(context) =>getIt<SignInFormBloc>(),
       child: LayoutBuilder(builder: (context,dimensions){
         final width = dimensions.maxWidth/AppSize.s1_5;
-        final height = dimensions.maxHeight/AppSize.s3;
+        final height = dimensions.maxHeight/AppSize.s1;
         return Center(
           child: SizedBox(
             width: width,
             height: height,
-            child:LoginForm()
+            child:RegisterForm()
           )
         );
       }
@@ -41,15 +41,31 @@ class LoginForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<SignInFormBloc,SignInFormState>(
       listener: (context, state) {
-
-        print('error messages');
-        // print(state.);
         state.authFailureOrSucessOption.fold(
           () {}, 
           (either) => either.fold((failure){
-            context
-            .read<StateRendererBloc>()
-            .add(const StateRendererEvent.fullErrorSreen('Error', 'Algo ha salido mal'));
+            failure.maybeMap(
+              cancelledByUser:(_){ 
+                context
+                  .read<StateRendererBloc>()
+                  .add(const StateRendererEvent.popUpError('Error', 'Algo ha salido mal'));
+              },
+              serverError:(e){ 
+                context
+                  .read<StateRendererBloc>()
+                  .add(const StateRendererEvent.popUpError('Imposible conectar', 'Algo ha salido mal'));
+              },
+              invalidEmailAndPasswordCombination:(e){ 
+                context
+                  .read<StateRendererBloc>()
+                  .add(const StateRendererEvent.popUpError('Combinacion equivocada', 'Algo ha salido mal'));
+              },
+              orElse: (){ 
+                context
+                  .read<StateRendererBloc>()
+                  .add(const StateRendererEvent.popUpError('Error', 'Algo ha salido mal'));
+              },
+            );
           },
           (_) {
             print('success');
@@ -67,7 +83,81 @@ class LoginForm extends StatelessWidget {
           children: <Widget> [
             const EmailTextForm(),
             const PasswordTextForm(),
-            ConfirmButton(isValid:()=>_key.currentState!.validate())
+            ConfirmButton(
+              isValid:()=>_key.currentState!.validate(),
+              action:()=>context
+                .read<SignInFormBloc>()
+                .add(const SignInFormEvent.signInWithEmailAndPasswordPressed())
+            )
+          ]
+        ),
+      );
+  }
+    );
+  }
+}
+
+class RegisterForm extends StatelessWidget {
+  RegisterForm({Key? key}) : super(key: key);
+  final _key = GlobalKey<FormState>();
+  @override
+  Widget build(BuildContext context) {
+    return BlocConsumer<SignInFormBloc,SignInFormState>(
+      listener: (context, state) {
+        state.authFailureOrSucessOption.fold(
+          () {}, 
+          (either) => either.fold((failure){
+            failure.maybeMap(
+              cancelledByUser:(_){ 
+                context
+                  .read<StateRendererBloc>()
+                  .add(const StateRendererEvent.popUpError('Error', 'Algo ha salido mal'));
+              },
+              serverError:(e){ 
+                context
+                  .read<StateRendererBloc>()
+                  .add(const StateRendererEvent.popUpError('Imposible conectar', 'Algo ha salido mal'));
+              },
+              emailAlreadyInUse:(e){ 
+                context
+                  .read<StateRendererBloc>()
+                  .add(const StateRendererEvent.popUpError('Email en uso', 'Algo ha salido mal'));
+              },
+              invalidEmailAndPasswordCombination:(e){ 
+                context
+                  .read<StateRendererBloc>()
+                  .add(const StateRendererEvent.popUpError('Combinacion equivocada', 'Algo ha salido mal'));
+              },
+              orElse: (){ 
+                context
+                  .read<StateRendererBloc>()
+                  .add(const StateRendererEvent.popUpError('Error', 'Algo ha salido mal'));
+              },
+            );
+          },
+          (_) {
+            print('success');
+            return null;
+          })
+          );
+      },
+      builder:(context,state){
+        print(state.showErrorMessages);
+        return Form(
+        autovalidateMode: state.showErrorMessages?AutovalidateMode.always:AutovalidateMode.disabled,
+        key:_key,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: <Widget> [
+            const EmailTextForm(),
+            const PasswordTextForm(),
+            const ConfirmPasswordTextForm(),
+            ConfirmButton(
+              isValid:()=>_key.currentState!.validate(),
+              action:()=> context
+                .read<SignInFormBloc>()
+                .add(const SignInFormEvent.registerWithEmailAndPasswordPressed())
+            )
           ]
         ),
       );
@@ -132,7 +222,52 @@ class PasswordTextForm extends StatelessWidget {
                 passwordMustContainNumber: (_)=>AppStrings.number,
                 orElse: () => null,
               ),
-            (r) =>null
+            (r) => null
+          ),
+      decoration: const InputDecoration(
+        icon:Icon(Icons.vpn_key),
+        hintText: AppStrings.password
+        ),
+    );
+  }
+}
+
+class ConfirmPasswordTextForm extends StatelessWidget {
+  const ConfirmPasswordTextForm({Key? key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return TextFormField(
+      autocorrect: false,
+      obscureText:true,
+      onChanged: ((value){
+        String pwd =
+        context
+          .read<SignInFormBloc>().state.password.value.fold(
+            (f) => f.maybeMap(
+                empty:(_)=>AppStrings.isEmpty,
+                passwordDoesNotMatch:(_)=> AppStrings.passwordDoesNotMatch,
+                orElse: () => '',
+              ),
+            (r) => ''
+          );
+        context
+          .read<SignInFormBloc>()
+          .add(SignInFormEvent.passwordConfirmChanged(pwd,value));
+      }
+        ),
+      validator: (_)=>
+        context
+          .read<SignInFormBloc>()
+          .state
+          .passwordConfirm
+          !.value
+          .fold(
+            (f) => f.maybeMap(
+                empty:(_)=>AppStrings.isEmpty,
+                passwordDoesNotMatch:(_)=> AppStrings.passwordDoesNotMatch,
+                orElse: () => null,
+              ),
+            (r) => null
           ),
       decoration: const InputDecoration(
         icon:Icon(Icons.vpn_key),
@@ -144,7 +279,8 @@ class PasswordTextForm extends StatelessWidget {
 
 class ConfirmButton extends StatelessWidget {
   final Function isValid;
-  const ConfirmButton({required this.isValid,Key? key}) : super(key: key);
+  final Function action;
+  const ConfirmButton({required this.isValid,required this.action,Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -154,11 +290,8 @@ class ConfirmButton extends StatelessWidget {
           context
             .read<StateRendererBloc>()
             .add(const StateRendererEvent.popUpLoading('Cargando', 'Espera por favor'));
+          action();
         }
-        context
-          .read<SignInFormBloc>()
-          .add(const SignInFormEvent.signInWithEmailAndPasswordPressed());
-        
       }, 
       child: const Text(AppStrings.complete)
     );

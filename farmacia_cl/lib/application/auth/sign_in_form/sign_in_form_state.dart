@@ -2,9 +2,10 @@ part of 'sign_in_form_bloc.dart';
 
 @freezed
 class SignInFormState with _$SignInFormState {
-  const factory SignInFormState({
+  factory SignInFormState({
     required EmailAdress emailAdress,
     required Password password,
+    PasswordConfirm? passwordConfirm,
     required bool showErrorMessages,
     required bool isSubmitting,
     required Option<Either<AuthFailure,Unit>> authFailureOrSucessOption
@@ -14,6 +15,7 @@ class SignInFormState with _$SignInFormState {
     password:Password(''),
     showErrorMessages: false,
     isSubmitting: false,
+    passwordConfirm: PasswordConfirm('',''),
     authFailureOrSucessOption:none()
   );
 }

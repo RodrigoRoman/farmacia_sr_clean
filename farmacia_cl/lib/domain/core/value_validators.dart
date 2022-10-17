@@ -38,6 +38,14 @@ Either<ValueFailure<String>,String> validatePasswordCapital(String pwd){
   }
 }
 
+Either<ValueFailure<String>,String> validatePasswordMatch(String pwd,String pwdConfirm){
+  if(pwd == pwdConfirm){
+    return right(pwdConfirm);
+  }else{
+    return left(ValueFailure.passwordDoesNotMatch(failedValue: pwdConfirm));
+  }
+}
+
 Either<ValueFailure<String>,String> validatePasswordSpecialChar(String pwd){
   if(pwd.contains(ConstantValidation.containsSpecialCharRegExp)){
     return right(pwd);

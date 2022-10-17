@@ -24,10 +24,25 @@ class Password extends ValueObject<String>{
     return Password._(
       validateStringNotEmpty(input)
         .flatMap(validatePasswordLength)
+        .flatMap(validatePasswordSpecialChar)
         .flatMap(validatePasswordNumber)
         .flatMap(validateStringNotEmpty)
         .flatMap(validatePasswordCapital)
       );
   }
   const Password._(this.value);
+}
+
+class PasswordConfirm extends ValueObject<String>{
+  @override
+  final Either<ValueFailure<String>,String> value;
+  factory PasswordConfirm(String pwd,String confirm){
+    assert(confirm != null);
+    assert(pwd != null);
+    return PasswordConfirm._(
+      validateStringNotEmpty(confirm).
+      flatMap((c){return validatePasswordMatch(pwd,c);})
+      );
+  }
+  const PasswordConfirm._(this.value);
 }

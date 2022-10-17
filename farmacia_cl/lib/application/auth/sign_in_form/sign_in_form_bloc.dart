@@ -27,6 +27,12 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
         authFailureOrSucessOption: none()
       ));
     });
+    on<PasswordConfirmChanged>((event, emit)  {
+      emit(state.copyWith(
+        passwordConfirm: PasswordConfirm(event.pwd,event.pwdConfirmStr),
+        authFailureOrSucessOption: none()
+      ));
+    });
     on<RegisterWithEmailAndPasswordPressed>((event,emit)async{
       await _performActionOnAuthFacadeWithEmailAndPassword(_authFacade.registerWithEmailAndPassword,emit);
     }

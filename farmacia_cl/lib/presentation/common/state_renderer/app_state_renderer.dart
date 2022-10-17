@@ -53,6 +53,14 @@ class StateAppWidget extends StatelessWidget {
             const RetryButton(buttonTitle: AppStrings.ok)
             ]
           );
+      case StateRendererType.POPUP_SERVER_ERROR_STATE:
+        return PopUpDialog(
+          children:[
+            const AnimatedImage(animationName:AppAssetNames.lost),
+            StateMessage(message: message),
+            const RetryButton(buttonTitle: AppStrings.ok)
+            ]
+          );
       case StateRendererType.POPUP_SUCCESS:
         return PopUpDialog(
           children:[
@@ -61,6 +69,7 @@ class StateAppWidget extends StatelessWidget {
             const RetryButton(buttonTitle: AppStrings.ok)
             ]
           );
+      
       case StateRendererType.FULL_SCREEN_LOADING_STATE:
         return ItemInColumn(
           children:[

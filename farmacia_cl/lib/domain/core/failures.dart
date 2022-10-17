@@ -22,6 +22,9 @@ abstract class ValueFailure<T> with _$ValueFailure<T>{
     required T failedValue,
     required int max,
   }) = PassWordTooShort<T>;
+  const factory ValueFailure.passwordDoesNotMatch({
+    required T failedValue,
+  }) = PassWordDoesNotMatch<T>;
   const factory ValueFailure.passwordMustContainSpecialCharacter({
     required T failedValue,
   }) = PasswordMustContainSpecialCharacter<T>;
