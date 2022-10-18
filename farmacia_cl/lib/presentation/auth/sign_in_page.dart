@@ -25,7 +25,7 @@ class _AuthPageState extends State<AuthPage> {
           child: SizedBox(
             width: width,
             height: height,
-            child:RegisterForm()
+            child: RegisterForm()
           )
         );
       }
@@ -74,6 +74,7 @@ class LoginForm extends StatelessWidget {
           );
       },
       builder:(context,state){
+        print('-----------show error --------------');
         print(state.showErrorMessages);
         return Form(
         autovalidateMode: state.showErrorMessages?AutovalidateMode.always:AutovalidateMode.disabled,
@@ -242,14 +243,15 @@ class ConfirmPasswordTextForm extends StatelessWidget {
       onChanged: ((value){
         String pwd =
         context
-          .read<SignInFormBloc>().state.password.value.fold(
-            (f) => f.maybeMap(
-                empty:(_)=>AppStrings.isEmpty,
-                passwordDoesNotMatch:(_)=> AppStrings.passwordDoesNotMatch,
-                orElse: () => '',
-              ),
-            (r) => ''
-          );
+          .read<SignInFormBloc>().state.password.value
+            .fold(
+              (f) => f.maybeMap(
+                  empty:(_)=>AppStrings.isEmpty,
+                  passwordDoesNotMatch:(_)=> AppStrings.passwordDoesNotMatch,
+                  orElse: () => '',
+                ),
+              (r) => r
+            );
         context
           .read<SignInFormBloc>()
           .add(SignInFormEvent.passwordConfirmChanged(pwd,value));
@@ -292,6 +294,7 @@ class ConfirmButton extends StatelessWidget {
             .add(const StateRendererEvent.popUpLoading('Cargando', 'Espera por favor'));
           action();
         }
+        action();
       }, 
       child: const Text(AppStrings.complete)
     );
