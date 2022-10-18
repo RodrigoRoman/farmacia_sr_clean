@@ -21,89 +21,15 @@ class _AuthPageState extends State<AuthPage> {
       child: LayoutBuilder(builder: (context,dimensions){
         final width = dimensions.maxWidth/AppSize.s1_5;
         final height = dimensions.maxHeight/AppSize.s1;
-        return Center(
-          child: SizedBox(
-            width: width,
-            height: height,
-            child: RegisterForm()
-          )
-        );
-      }
-      ),
-    );
-  }
-}
 
-class LoginForm extends StatelessWidget {
-  LoginForm({Key? key}) : super(key: key);
-  final _key = GlobalKey<FormState>();
-  @override
-  Widget build(BuildContext context) {
-    return BlocConsumer<SignInFormBloc,SignInFormState>(
-      listener: (context, state) {
-        state.authFailureOrSucessOption.fold(
-          () {}, 
-          (either) => either.fold((failure){
-            failure.maybeMap(
-              cancelledByUser:(_){ 
-                context
-                  .read<StateRendererBloc>()
-                  .add(const StateRendererEvent.popUpError('Error', 'Algo ha salido mal'));
-              },
-              serverError:(e){ 
-                context
-                  .read<StateRendererBloc>()
-                  .add(const StateRendererEvent.popUpError('Imposible conectar', 'Algo ha salido mal'));
-              },
-              invalidEmailAndPasswordCombination:(e){ 
-                context
-                  .read<StateRendererBloc>()
-                  .add(const StateRendererEvent.popUpError('Combinacion equivocada', 'Algo ha salido mal'));
-              },
-              orElse: (){ 
-                context
-                  .read<StateRendererBloc>()
-                  .add(const StateRendererEvent.popUpError('Error', 'Algo ha salido mal'));
-              },
-            );
-          },
-          (_) {
-            print('success');
-            return null;
-          })
-          );
-      },
-      builder:(context,state){
-        print('-----------show error --------------');
-        print(state.showErrorMessages);
-        return Form(
-        autovalidateMode: state.showErrorMessages?AutovalidateMode.always:AutovalidateMode.disabled,
-        key:_key,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: <Widget> [
-            const EmailTextForm(),
-            const PasswordTextForm(),
-            ConfirmButton(
-              isValid:()=>_key.currentState!.validate(),
-              action:()=>context
-                .read<SignInFormBloc>()
-                .add(const SignInFormEvent.signInWithEmailAndPasswordPressed())
-            )
-          ]
-        ),
-      );
-  }
-    );
-  }
-}
-
-class RegisterForm extends StatelessWidget {
-  RegisterForm({Key? key}) : super(key: key);
-  final _key = GlobalKey<FormState>();
-  @override
-  Widget build(BuildContext context) {
-    return BlocConsumer<SignInFormBloc,SignInFormState>(
+        bool md = context
+              .read<SignInFormBloc>()
+              .state
+              .logRegMode;
+        print('----state logmod---');
+        print(md);
+        print('---------');
+        return BlocConsumer<SignInFormBloc,SignInFormState>(
       listener: (context, state) {
         state.authFailureOrSucessOption.fold(
           () {}, 
@@ -143,8 +69,60 @@ class RegisterForm extends StatelessWidget {
           );
       },
       builder:(context,state){
-        print(state.showErrorMessages);
-        return Form(
+        return Center(
+          child: SizedBox(
+            width: width,
+            height: height,
+            child: context
+              .read<SignInFormBloc>()
+              .state
+              .logRegMode?RegisterForm():LoginForm()
+          )
+        );
+      }
+        );
+      }
+      ),
+    );
+  }
+}
+
+class LoginForm extends StatelessWidget {
+  LoginForm({Key? key}) : super(key: key);
+  final _key = GlobalKey<FormState>();
+  @override
+  Widget build(BuildContext context) {
+    SignInFormState state = context
+                .read<SignInFormBloc>().state;
+    return  Form(
+        autovalidateMode: state.showErrorMessages?AutovalidateMode.always:AutovalidateMode.disabled,
+        key:_key,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: <Widget> [
+            const EmailTextForm(),
+            const PasswordTextForm(),
+            ConfirmButton(
+              isValid:()=>_key.currentState!.validate(),
+              action:()=>context
+                .read<SignInFormBloc>()
+                .add(const SignInFormEvent.signInWithEmailAndPasswordPressed())
+            ),
+            const SwitchLogRegButton()
+          ]
+        ),
+      );
+  }
+}
+
+class RegisterForm extends StatelessWidget {
+  RegisterForm({Key? key}) : super(key: key);
+  final _key = GlobalKey<FormState>();
+  @override
+  Widget build(BuildContext context) {
+    SignInFormState state = context
+                .read<SignInFormBloc>().state;
+    return Form(
         autovalidateMode: state.showErrorMessages?AutovalidateMode.always:AutovalidateMode.disabled,
         key:_key,
         child: Column(
@@ -158,12 +136,11 @@ class RegisterForm extends StatelessWidget {
               action:()=> context
                 .read<SignInFormBloc>()
                 .add(const SignInFormEvent.registerWithEmailAndPasswordPressed())
-            )
+            ),
+            const SwitchLogRegButton()
           ]
         ),
       );
-  }
-    );
   }
 }
 
@@ -297,6 +274,26 @@ class ConfirmButton extends StatelessWidget {
         action();
       }, 
       child: const Text(AppStrings.complete)
+    );
+  }
+}
+
+class SwitchLogRegButton extends StatelessWidget {
+  const SwitchLogRegButton({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap:(){context
+          .read<SignInFormBloc>()
+          .add(const SignInFormEvent.switchMode());
+          },
+      child:Text(
+        context
+          .read<SignInFormBloc>()
+          .state
+          .logRegMode
+          ?AppStrings.loginMode:AppStrings.registerMode)
     );
   }
 }

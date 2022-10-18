@@ -33,6 +33,14 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
         authFailureOrSucessOption: none()
       ));
     });
+    on<SwitchMode>((event, emit)  {
+      print('swtich mode Called');
+      print(state.logRegMode);
+      emit(state.copyWith(
+        logRegMode: !state.logRegMode,
+        authFailureOrSucessOption: none()
+      ));
+    });
     on<RegisterWithEmailAndPasswordPressed>((event,emit)async{
       await _performActionOnAuthFacadeWithEmailAndPassword(_authFacade.registerWithEmailAndPassword,emit);
     }

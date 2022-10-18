@@ -8,6 +8,7 @@ class SignInFormState with _$SignInFormState {
     PasswordConfirm? passwordConfirm,
     required bool showErrorMessages,
     required bool isSubmitting,
+    required bool logRegMode,
     required Option<Either<AuthFailure,Unit>> authFailureOrSucessOption
   }) = _SignInFormState;
   factory SignInFormState.initial() => SignInFormState(
@@ -15,6 +16,7 @@ class SignInFormState with _$SignInFormState {
     password:Password(''),
     showErrorMessages: false,
     isSubmitting: false,
+    logRegMode:true,
     passwordConfirm: PasswordConfirm('',''),
     authFailureOrSucessOption:none()
   );

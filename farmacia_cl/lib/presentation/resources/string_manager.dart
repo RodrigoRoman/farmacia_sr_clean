@@ -18,7 +18,10 @@ class AppStrings{
   static const String special = 'Incluya simbolo \$&*+';
   static const String number = 'Incluya un numero';
   static const String isEmpty = 'Elemento vacio';
-    static const String passwordDoesNotMatch =  'Las contraseña no coinciden';
+  static const String passwordDoesNotMatch =  'Las contraseña no coinciden';
+  static const String loginMode = 'Ingresar con una cuenta';
+  static const String registerMode = 'Crear una cuenta';
+
 
 
 
