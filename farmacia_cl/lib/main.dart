@@ -13,6 +13,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:get_it/get_it.dart';
 
+import 'presentation/common/widget_elements/popup_dialog.dart';
+
 // import 'firebase_options.dart';
 
 
@@ -60,7 +62,7 @@ class MyApp extends StatelessWidget {
               print('EEEEEEEEEEEEEEEE');
               return SizedBox(
                 width: 400,
-                height: 600,
+                height: 900,
                 child: StateRenderer(
                   stateRendererType: state.stateRender,
                   message: state.message,
@@ -71,7 +73,7 @@ class MyApp extends StatelessWidget {
               dismissDialog(context);
               return SizedBox(
                 width: 400,
-                height: 600,
+                height: 900,
                 child: AuthPage()
               );
             }

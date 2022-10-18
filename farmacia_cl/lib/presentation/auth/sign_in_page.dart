@@ -1,6 +1,8 @@
 import 'package:farmacia_cl/application/auth/sign_in_form/sign_in_form_bloc.dart';
 import 'package:farmacia_cl/application/state_render/bloc/state_renderer_bloc.dart';
 import 'package:farmacia_cl/injection.dart';
+import 'package:farmacia_cl/presentation/common/widget_elements/image_container.dart';
+import 'package:farmacia_cl/presentation/resources/asset_names.dart';
 import 'package:farmacia_cl/presentation/resources/constant_size_values.dart';
 import 'package:farmacia_cl/presentation/resources/string_manager.dart';
 import 'package:flutter/material.dart';
@@ -21,15 +23,8 @@ class _AuthPageState extends State<AuthPage> {
       child: LayoutBuilder(builder: (context,dimensions){
         final width = dimensions.maxWidth/AppSize.s1_5;
         final height = dimensions.maxHeight/AppSize.s1;
-
-        bool md = context
-              .read<SignInFormBloc>()
-              .state
-              .logRegMode;
-        print('----state logmod---');
-        print(md);
-        print('---------');
         return BlocConsumer<SignInFormBloc,SignInFormState>(
+          buildWhen:(previous, current) => (previous.logRegMode!=current.logRegMode)|(previous.showErrorMessages!=current.showErrorMessages),
       listener: (context, state) {
         state.authFailureOrSucessOption.fold(
           () {}, 
@@ -76,7 +71,7 @@ class _AuthPageState extends State<AuthPage> {
             child: context
               .read<SignInFormBloc>()
               .state
-              .logRegMode?RegisterForm():LoginForm()
+              .logRegMode?LoginForm():RegisterForm()
           )
         );
       }
@@ -92,14 +87,13 @@ class LoginForm extends StatelessWidget {
   final _key = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-    SignInFormState state = context
-                .read<SignInFormBloc>().state;
     return  Form(
-        autovalidateMode: state.showErrorMessages?AutovalidateMode.always:AutovalidateMode.disabled,
+        autovalidateMode:AutovalidateMode.disabled,
         key:_key,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget> [
+            const AnimatedImage(animationName: AppAssetNames.femaleUser),
             const EmailTextForm(),
             const PasswordTextForm(),
             ConfirmButton(
@@ -120,14 +114,14 @@ class RegisterForm extends StatelessWidget {
   final _key = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-    SignInFormState state = context
-                .read<SignInFormBloc>().state;
     return Form(
-        autovalidateMode: state.showErrorMessages?AutovalidateMode.always:AutovalidateMode.disabled,
+        autovalidateMode: context
+                .read<SignInFormBloc>().state.showErrorMessages?AutovalidateMode.always:AutovalidateMode.disabled,
         key:_key,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget> [
+            const AnimatedImage(animationName: AppAssetNames.maleUser),
             const EmailTextForm(),
             const PasswordTextForm(),
             const ConfirmPasswordTextForm(),
@@ -256,6 +250,8 @@ class ConfirmPasswordTextForm extends StatelessWidget {
   }
 }
 
+
+
 class ConfirmButton extends StatelessWidget {
   final Function isValid;
   final Function action;
@@ -269,7 +265,7 @@ class ConfirmButton extends StatelessWidget {
           context
             .read<StateRendererBloc>()
             .add(const StateRendererEvent.popUpLoading('Cargando', 'Espera por favor'));
-          action();
+          // action();
         }
         action();
       }, 

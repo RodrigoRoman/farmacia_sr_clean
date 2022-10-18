@@ -8,4 +8,7 @@ class AppAssetNames{
   static const packing = "$JSON_PATH/packing.json";
   static const errorGerm = "$JSON_PATH/wiggly-germ-loop.json";
   static const noInternet = "$JSON_PATH/no-internet.json";
+  static const maleUser = "$JSON_PATH/male_user.json";
+  static const femaleUser = "$JSON_PATH/female_user.json";
+
 }

@@ -1,11 +1,12 @@
+import 'package:farmacia_cl/presentation/common/widget_elements/buttons.dart';
+import 'package:farmacia_cl/presentation/common/widget_elements/image_container.dart';
+import 'package:farmacia_cl/presentation/common/widget_elements/popup_dialog.dart';
 import 'package:farmacia_cl/presentation/resources/asset_names.dart';
 import 'package:farmacia_cl/presentation/resources/color_manager.dart';
 import 'package:farmacia_cl/presentation/resources/const_values.dart';
 import 'package:farmacia_cl/presentation/resources/constant_size_values.dart';
 import 'package:farmacia_cl/presentation/resources/string_manager.dart';
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
-
 
 class StateRenderer extends StatelessWidget{
   final  String? message;
@@ -69,7 +70,6 @@ class StateAppWidget extends StatelessWidget {
             const RetryButton(buttonTitle: AppStrings.ok)
             ]
           );
-      
       case StateRendererType.FULL_SCREEN_LOADING_STATE:
         return ItemInColumn(
           children:[
@@ -96,73 +96,6 @@ class StateAppWidget extends StatelessWidget {
 }
 
 
-
-
-class PopUpDialog extends StatelessWidget {
-  final List<Widget> children;
-  const PopUpDialog({required this.children,Key? key}): super(key: key);
-  @override
-  Widget build(BuildContext context) {
-    return Dialog(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(AppSize.s14)
-      ),
-      elevation: AppSize.s1_5,
-      backgroundColor: Colors.transparent,
-      child: Container(
-        decoration: BoxDecoration(
-          color: ColorManager.white,
-          shape: BoxShape.rectangle,
-          borderRadius: BorderRadius.circular(AppSize.s14),
-          boxShadow: const [
-            BoxShadow(
-              color: Colors.black26,
-              blurRadius:AppSize.s12,
-              offset:Offset(AppSize.s0,AppSize.s12)
-            )
-          ]
-        ),
-        child: DialogContent(children:children),
-      ),
-    );
-  }
-}
-
-class DialogContent extends StatelessWidget {
-  final List<Widget> children;
-  const DialogContent({required this.children,Key? key}) : super(key: key);
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment:MainAxisAlignment.center,
-      mainAxisSize:  MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: children,
-    );
-  }
-}
-
-class AnimatedImage extends StatelessWidget {
-  final String animationName;
-  const AnimatedImage({required this.animationName,Key? key}) : super(key: key);
-  @override
-  Widget build(BuildContext context) {
-    return  SizedBox(
-      width: 400,
-      height: 400,
-      child: Lottie.asset(animationName),
-    );
-    // LayoutBuilder(
-    //   builder: (context,constraints) {
-    //     return SizedBox(
-    //       width: constraints.maxWidth/AppSizePercents.per75,
-    //       height: constraints.maxHeight/AppSizePercents.per75,
-    //       child: Lottie.asset(animationName),
-    //     );
-    //   }
-    // );
-  }
-}
 class StateMessage extends StatelessWidget {
   final String message;
   const StateMessage({required this.message,Key? key}) : super(key: key);
@@ -180,45 +113,7 @@ class StateMessage extends StatelessWidget {
   }
 }
 
-class RetryButton extends StatelessWidget {
-  final String buttonTitle;
-  const RetryButton({required this.buttonTitle,Key? key}) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-          child: Padding(
-            padding: const EdgeInsets.all(AppSize.s8),
-            child: SizedBox(
-              width: 70,
-              height: 70,
-              child: ElevatedButton(
-                child: Text(buttonTitle),
-                onPressed: ()=>print('buttonTitlePressed'),
-              ),
-            ),
-          ),
-        );
-    
-    // return LayoutBuilder(
-    //   builder: (context,constraints) {
-    //     return Center(
-    //       child: Padding(
-    //         padding: const EdgeInsets.all(AppSize.s8),
-    //         child: SizedBox(
-    //           width: constraints.maxWidth/AppSizePercents.per75,
-    //           height: constraints.maxHeight/AppSizePercents.per75,
-    //           child: ElevatedButton(
-    //             child: Text(buttonTitle),
-    //             onPressed: ()=>print('buttonTitlePressed'),
-    //           ),
-    //         ),
-    //       ),
-    //     );
-    //   }
-    // );
-  }
-}
 
 class ItemInColumn extends StatelessWidget {
   final List<Widget> children;
@@ -236,33 +131,3 @@ class ItemInColumn extends StatelessWidget {
   }
 }
 
-//Remove existing Dialog
-dismissDialog(BuildContext context){
-      if(_isThereCurrentDialogShowing(context)){
-        Navigator.of(context,rootNavigator: true).pop(true);
-
-      }
-    }
-
-//Check if there is a Dialog
-_isThereCurrentDialogShowing(BuildContext context)=> ModalRoute.of(context)?.isCurrent != true; 
-
-//Triger PopUp 
-showPopUp(BuildContext context, StateRendererType stateRendererType,String message,
-  {String title = AppStrings.empty}){
-    WidgetsBinding.instance.addPostFrameCallback((_)=>
-      showDialog(
-        context: context, 
-        builder: (BuildContext context)=>SizedBox(
-          height: AppSize.s22,
-          width: AppSize.s12,
-          child: StateRenderer(
-            stateRendererType: stateRendererType, 
-            message: message,
-            title: title,
-            retryActionFunction: (){}
-            ),
-        )
-          )
-      );
-  }
