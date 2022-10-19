@@ -1,3 +1,4 @@
+import 'package:farmacia_cl/presentation/resources/constant_size_values.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
@@ -6,19 +7,11 @@ class AnimatedImage extends StatelessWidget {
   const AnimatedImage({required this.animationName,Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return  SizedBox(
-      width: 400,
-      height: 400,
-      child: Lottie.asset(animationName),
+    Size size = MediaQuery.of(context).size;
+    return SizedBox(
+      width: (size.width)*AppSizePercents.per70,
+      height: (size.height)*AppSizePercents.per40,
+      child: Lottie.asset(animationName)
     );
-    // LayoutBuilder(
-    //   builder: (context,constraints) {
-    //     return SizedBox(
-    //       width: constraints.maxWidth/AppSizePercents.per75,
-    //       height: constraints.maxHeight/AppSizePercents.per75,
-    //       child: Lottie.asset(animationName),
-    //     );
-    //   }
-    // );
   }
 }

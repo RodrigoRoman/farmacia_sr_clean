@@ -49,7 +49,7 @@ class StateAppWidget extends StatelessWidget {
       case StateRendererType.POPUP_ERROR_STATE:
         return PopUpDialog(
           children:[
-            const AnimatedImage(animationName:AppAssetNames.loading),
+            const AnimatedImage(animationName:AppAssetNames.error),
             StateMessage(message: message),
             const RetryButton(buttonTitle: AppStrings.ok)
             ]

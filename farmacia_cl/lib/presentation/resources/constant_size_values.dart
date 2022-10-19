@@ -35,26 +35,33 @@ class AppSize{
 }
 
 class AppSizePercents{
-  static const double per8 = 8.0;
-  static const double per12 = 12.0;
-  static const double per16 = 16.0;
-  static const double per18 = 18.0;
-  static const double per20 = 20.0;
-  static const double per22 = 22.0;
-  static const double per24 = 24.0;
-  static const double per25 = 25.0;
-  static const double per30 = 30.0;
-  static const double per40 = 40.0;
-  static const double per45 = 45.0;
-  static const double per50 = 50.0;
-  static const double per55 = 55.0;
-  static const double per60 = 60.0;
-  static const double per65 = 65.0;
-  static const double per70 = 70.0;
-  static const double per75 = 75.0;
-  static const double per80 = 80.0;
-  static const double per85 = 85.0;
-  static const double per90 = 90.0;
-  static const double per95 = 95.0;
-  static const double per100 = 100.0;
+  static const double per8 = 0.08;
+  static const double per12 = 0.12;
+  static const double per16 = 0.16;
+  static const double per18 = 0.18;
+  static const double per20 = 0.20;
+  static const double per22 = 0.22;
+  static const double per24 = 0.24;
+  static const double per25 = 0.25;
+  static const double per30 = 0.30;
+  static const double per40 = 0.40;
+  static const double per45 = 0.45;
+  static const double per50 = 0.50;
+  static const double per55 = 0.55;
+  static const double per60 = 0.60;
+  static const double per65 = 0.65;
+  static const double per70 = 0.70;
+  static const double per75 = 0.75;
+  static const double per80 = 0.80;
+  static const double per85 = 0.85;
+  static const double per90 = 0.90;
+  static const double per95 = 0.95;
+  static const double per100 = 1.00;
+  static const double per120 = 1.20;
+  static const double per130 = 1.30;
+  static const double per150 = 1.50;
+  static const double per160 = 1.60;
+  static const double per170 = 1.70;
+  static const double per180 = 1.80;
+
 }

@@ -1,12 +1,15 @@
 import 'package:farmacia_cl/application/auth/sign_in_form/sign_in_form_bloc.dart';
 import 'package:farmacia_cl/application/state_render/bloc/state_renderer_bloc.dart';
 import 'package:farmacia_cl/injection.dart';
+import 'package:farmacia_cl/presentation/common/widget_elements/buttons.dart';
 import 'package:farmacia_cl/presentation/common/widget_elements/image_container.dart';
 import 'package:farmacia_cl/presentation/resources/asset_names.dart';
+import 'package:farmacia_cl/presentation/resources/color_manager.dart';
 import 'package:farmacia_cl/presentation/resources/constant_size_values.dart';
 import 'package:farmacia_cl/presentation/resources/string_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class AuthPage extends StatefulWidget {
   const AuthPage({Key? key}) : super(key: key);
@@ -21,8 +24,8 @@ class _AuthPageState extends State<AuthPage> {
     return BlocProvider(
       create:(context) =>getIt<SignInFormBloc>(),
       child: LayoutBuilder(builder: (context,dimensions){
-        final width = dimensions.maxWidth/AppSize.s1_5;
-        final height = dimensions.maxHeight/AppSize.s1;
+        final width = dimensions.maxWidth*AppSizePercents.per70;
+        final height = dimensions.maxHeight*AppSizePercents.per90;
         return BlocConsumer<SignInFormBloc,SignInFormState>(
           buildWhen:(previous, current) => (previous.logRegMode!=current.logRegMode)|(previous.showErrorMessages!=current.showErrorMessages),
       listener: (context, state) {
@@ -57,8 +60,17 @@ class _AuthPageState extends State<AuthPage> {
               },
             );
           },
-          (_) {
-            print('success');
+          (val) {
+            context
+                  .read<SignInFormBloc>().state.logRegMode?
+            context
+                  .read<StateRendererBloc>()
+                  .add(const StateRendererEvent.popUpSuccess('Success', 'Bienvenido!'))
+                  :
+                  context
+                  .read<StateRendererBloc>()
+                  .add(const StateRendererEvent.popUpSuccess('Success', 'Usuario registrado correctamente'))
+                  ;
             return null;
           })
           );
@@ -94,6 +106,7 @@ class LoginForm extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget> [
             const AnimatedImage(animationName: AppAssetNames.femaleUser),
+            
             const EmailTextForm(),
             const PasswordTextForm(),
             ConfirmButton(
@@ -102,6 +115,7 @@ class LoginForm extends StatelessWidget {
                 .read<SignInFormBloc>()
                 .add(const SignInFormEvent.signInWithEmailAndPasswordPressed())
             ),
+            const RowMediaButtons(),
             const SwitchLogRegButton()
           ]
         ),
@@ -131,6 +145,7 @@ class RegisterForm extends StatelessWidget {
                 .read<SignInFormBloc>()
                 .add(const SignInFormEvent.registerWithEmailAndPasswordPressed())
             ),
+            const RowMediaButtons(),
             const SwitchLogRegButton()
           ]
         ),
@@ -251,7 +266,6 @@ class ConfirmPasswordTextForm extends StatelessWidget {
 }
 
 
-
 class ConfirmButton extends StatelessWidget {
   final Function isValid;
   final Function action;
@@ -265,13 +279,40 @@ class ConfirmButton extends StatelessWidget {
           context
             .read<StateRendererBloc>()
             .add(const StateRendererEvent.popUpLoading('Cargando', 'Espera por favor'));
-          // action();
+        }else{
+          context
+            .read<SignInFormBloc>().state.logRegMode?
+          context
+            .read<StateRendererBloc>()
+            .add(const StateRendererEvent.popUpError('Combinacion incorrecta', 'Elija un mail y contraseña validos'))
+            :context
+            .read<StateRendererBloc>()
+            .add(const StateRendererEvent.popUpError('Espacios llenados incorrectamente', 'Asegurese de llenar correctamente los espacios'))
+            ;
+                      
+
         }
         action();
       }, 
       child: const Text(AppStrings.complete)
     );
   }
+}
+
+
+class RowMediaButtons extends StatelessWidget{
+  const RowMediaButtons({Key? key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        SplashIconButton(act: (){print('clickeooood');},icon: FontAwesomeIcons.facebookF),
+        SplashIconButton(act: (){},icon: FontAwesomeIcons.google)
+      ],
+    );
+  }
+
 }
 
 class SwitchLogRegButton extends StatelessWidget {
@@ -285,11 +326,13 @@ class SwitchLogRegButton extends StatelessWidget {
           .add(const SignInFormEvent.switchMode());
           },
       child:Text(
-        context
+        !context
           .read<SignInFormBloc>()
           .state
           .logRegMode
-          ?AppStrings.loginMode:AppStrings.registerMode)
+          ?AppStrings.loginMode:AppStrings.registerMode,
+          style: Theme.of(context).textTheme.subtitle2
+          ),
     );
   }
 }

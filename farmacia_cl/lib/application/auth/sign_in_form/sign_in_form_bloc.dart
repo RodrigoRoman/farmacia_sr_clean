@@ -34,8 +34,6 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
       ));
     });
     on<SwitchMode>((event, emit)  {
-      print('swtich mode Called');
-      print(state.logRegMode);
       emit(state.copyWith(
         logRegMode: !state.logRegMode,
         authFailureOrSucessOption: none()
@@ -70,7 +68,7 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
         Either<AuthFailure,Unit>? failureOrSuccess;
         final isEmailValid = state.emailAdress.isValid();
         final isPasswordValid = state.password.isValid();
-        if(isEmailValid && isPasswordValid){
+        if(isEmailValid && isPasswordValid ){
           emit(state.copyWith(
             isSubmitting: true,
             authFailureOrSucessOption: none()
@@ -80,7 +78,6 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
             password: state.password
           );
         }
-        print('Not');
         emit(state.copyWith(
           isSubmitting: false,
           showErrorMessages: true,
@@ -89,7 +86,6 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
         );
         return null;
       }
-
 }
   
 

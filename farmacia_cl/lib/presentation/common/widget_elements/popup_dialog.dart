@@ -67,16 +67,12 @@ showPopUp(BuildContext context, StateRendererType stateRendererType,String messa
     WidgetsBinding.instance.addPostFrameCallback((_)=>
       showDialog(
         context: context, 
-        builder: (BuildContext context)=>SizedBox(
-          height: AppSize.s22,
-          width: AppSize.s12,
-          child: StateRenderer(
+        builder: (BuildContext context)=> StateRenderer(
             stateRendererType: stateRendererType, 
             message: message,
             title: title,
             retryActionFunction: (){}
             ),
-        )
           )
       );
   }

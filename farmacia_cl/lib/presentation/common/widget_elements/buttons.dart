@@ -1,3 +1,4 @@
+import 'package:farmacia_cl/presentation/resources/color_manager.dart';
 import 'package:farmacia_cl/presentation/resources/constant_size_values.dart';
 import 'package:flutter/material.dart';
 
@@ -38,5 +39,22 @@ class RetryButton extends StatelessWidget {
     //     );
     //   }
     // );
+  }
+}
+
+class SplashIconButton extends StatelessWidget{
+  final Function act;
+  final IconData icon;
+  const SplashIconButton({required this.act,required this.icon,Key? key}):super(key:key);
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+      onPressed: ()=>act(), 
+      icon: Icon(icon),
+      splashRadius: AppSize.s14,
+      color:ColorManager.grey,
+      splashColor: ColorManager.white,
+      // style: Theme.of(context).buttonTheme.
+    );
   }
 }
