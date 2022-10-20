@@ -1,3 +1,5 @@
+import 'package:auto_route/auto_route.dart';
+import 'package:farmacia_cl/application/auth/auth_bloc.dart';
 import 'package:farmacia_cl/application/auth/sign_in_form/sign_in_form_bloc.dart';
 import 'package:farmacia_cl/application/state_render/bloc/state_renderer_bloc.dart';
 import 'package:farmacia_cl/injection.dart';
@@ -7,6 +9,7 @@ import 'package:farmacia_cl/presentation/resources/const_values.dart';
 import 'package:farmacia_cl/presentation/resources/constant_size_values.dart';
 import 'package:farmacia_cl/presentation/resources/string_manager.dart';
 import 'package:farmacia_cl/presentation/resources/themes.dart';
+import 'package:farmacia_cl/presentation/splash/splash_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -30,16 +33,22 @@ void main() async {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
   // GetIt getIt = GetIt.instance;
-
-
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return  MaterialApp(
+      
       theme: CustomTheme.lightTheme,
       home: 
-      BlocProvider(
-      create:(context) =>getIt<StateRendererBloc>(),
+      MultiBlocProvider(
+        providers: [
+          BlocProvider<StateRendererBloc>(
+            create: (context) =>getIt<StateRendererBloc>(),
+          ),
+          BlocProvider<AuthBloc>(
+            create: (context) =>getIt<AuthBloc>()..add(const AuthEvent.authCheckRequested()),
+          )
+        ],
       child:Scaffold(
         body: BlocConsumer<StateRendererBloc,StateRendererState>(
           listener: (context, state) {
@@ -68,7 +77,16 @@ class MyApp extends StatelessWidget {
               return SizedBox(
                 width: size.width*AppSizePercents.per100,
                 height: size.height*AppSizePercents.per100,
-                child: AuthPage()
+                child: BlocListener<AuthBloc,AuthState>(
+                  listener: (context, state) {
+                    state.map(
+                      initial: (_){}, 
+                      authenticated: (_)=>context.router.replace(), 
+                      unauthenticated: ExtendedNavigator.of
+                    );
+                  },
+                  child: AuthPage()
+                )
               );
             }
           }

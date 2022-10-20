@@ -31,3 +31,6 @@ class DarkThemeColors{
   static Color background= HexColor.fromHex('#58154F');
   static Color tertiary= HexColor.fromHex('#234A7E');
 }
+
+
+var lightGradientColors = <Color>[LightThemeColors.background,LightThemeColors.primary];
