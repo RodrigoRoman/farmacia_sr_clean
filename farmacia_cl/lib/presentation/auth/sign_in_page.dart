@@ -307,8 +307,20 @@ class RowMediaButtons extends StatelessWidget{
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        SplashIconButton(act: (){print('clickeooood');},icon: FontAwesomeIcons.facebookF),
-        SplashIconButton(act: (){},icon: FontAwesomeIcons.google)
+        SplashIconButton(
+          act: (){
+            context
+              .read<SignInFormBloc>()
+              .add(const SignInFormEvent.signinWithGooglePressed());
+              },
+          icon: FontAwesomeIcons.facebookF),
+        SplashIconButton(
+          act: (){
+            context
+              .read<SignInFormBloc>()
+              .add(const SignInFormEvent.signinWithGooglePressed());
+          },
+          icon: FontAwesomeIcons.google)
       ],
     );
   }
